@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don Bosco General School</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+
+    <style>
+        :root {
+            --primary-blue: #0b3d91;
+            --gold: #d4af37;
+            --light-gray: #f9fafc;
+        }
+
+        /* Smooth Scroll Config */
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto; }
+        body { margin: 0; font-family: 'Lato', sans-serif; color: black; line-height: 1.6; background-color: white; overflow-x: hidden; }
+
+        /* --- REVEAL ANIMATION --- */
+        .reveal { opacity: 0; transform: translateY(40px); transition: all 1s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- NAVIGATION --- */
+       .section {
+    position: relative;
+    display: flex;
+    height: 100vh;
+    width: 100%;
+
+    background-image: url("https://images.unsplash.com/photo-1503676260728-1c00da094a0b");
+    background-size: cover;
+    background-position: center;
+
+    background-color: rgba(0,0,0,0.5);
+    background-blend-mode: darken;
+}
+
+/* TOP RIGHT HEADER (NAV) */
+.top-right {
+    position: fixed;              /* stays visible on scroll */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;                 /* nav height */
+    display: flex;
+
+    align-items: center;
+    justify-content: space-between; /* logo left, menu right */
+    padding: 0 20px;
+    background-color: rgba(11, 61, 145, 0.8); /* transparent blue */
+    z-index: 1000;
+}
+
+/* LOGO + SCHOOL NAME CONTAINER */
+.logo-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* LOGO */
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+/* SCHOOL NAME */
+.school-name {
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+}
+
+/* NAVIGATION LINKS */
+.nav-links {
+    display: flex;
+    gap: 25px;             /* spacing between items */
+    list-style: none;      /* remove bullets */
+    margin: 0;
+    padding: 0;
+    align-items: center;
+    margin-left: 500px;   /* vertical alignment */
+}
+
+.nav-links li {
+    cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+    border: 1px solid rgb(121, 121, 167);
+    padding: 5px;
+    border-radius: 10px;
+}
+
+.nav-links li:hover {
+    color: #FFD700; /* gold on hover */
+}
+
+/* OPTIONAL: style select */
+.nav-linkselect {
+      cursor: pointer;
+    color: white;
+    font-weight: bold;
+    transition: color 0.3s;
+    border: 1px solid rgb(121, 121, 167);
+    padding: 5px;
+    border-radius: 10px;
+    background-color:  rgba(11, 61, 145, 0.8);
+    margin-right: 100px;
+    
+}
+
+
+/* MAIN CONTENT */
+.section main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+    padding: 20px;
+}
+#hamburger {
+    position: fixed;       /* fixed so it stays on scroll */
+    top: 100px;            /* below the logo */
+    right: 0;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(11, 61, 145, 0.8);
+    border-radius: 8px 0 0 8px;
+    cursor: pointer;
+    z-index: 1000;
+    font-size: 2rem;
+    color: white;
+}
+
+/* Full screen overlay */
+#overlay-menu {
+    position: fixed;
+    height: 100vh;
+    width: 0;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 91, 172, 0.95);
+    overflow-x: hidden;
+    transition: 0.5s;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#overlay-menu nav ul {
+    display: flex;          /* makes items side by side */
+    flex-wrap: wrap;        /* wrap to next line if too many items */
+    justify-content: center; /* center items horizontally */
+    gap: 40px;              /* space between items */
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+#overlay-menu nav ul li {
+    margin: 20px 0;
+}
+
+#overlay-menu nav ul li a {
+    color: white;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+#overlay-menu nav ul li a:hover {
+    color: #ffdd00;
+}
+
+/* Close button */
+.close-btn {
+    position: absolute;
+    top: 20px;
+    right: 40px;
+    font-size: 3rem;
+    cursor: pointer;
+    color: white;
+}
+
+/* DON BOSCO IMAGE */
+.bosco-img {
+    width: 120px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* TEXT */
+.text {
+    font-size: 20px;
+    max-width: 600px;
+    line-height: 1.5;
+}
+
+/* ASIDE */
+.section aside {
+    width: 80px;
+    border-left: 3px solid white;
+    position: sticky;
+}
+
+        /* --- ABOUT --- */
+        .about { padding: 100px 10%; display: flex; gap: 50px; align-items: center; flex-wrap: wrap; }
+        .about h2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--primary-blue); flex: 1; min-width: 300px; }
+        .about-text { flex: 2; font-size: 1.2rem; min-width: 300px; }
+        .btn-luxury { 
+            padding: 12px 35px; background: var(--primary-blue); color: white; 
+            border: none; border-radius: 4px; cursor: pointer; margin-top: 25px; 
+            font-weight: 700; text-transform: uppercase; transition: 0.3s;
+        }
+        .btn-luxury:hover { background: var(--gold); color: black; }
+
+        /* --- THREE BOXES (WITH TEXT RESTORED) --- */
+        .three-boxes {
+    display: flex;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    margin-top: 40px;
+}
+
+.three-boxes .box {
+    flex: 1;                     /* equal width */
+    border-left: 3px solid #005BAC; /* vertical line between boxes */
+    font-size: 1.5rem; 
+    border-top:  3px solid #005BAC; 
+    border-bottom: 3px solid #005BAC; 
+}
+
+/* Remove left border from the first box */
+.three-boxes .box:first-child {
+    border-left: none;
+    height: 600px;
+}
+
+/* BOX CONTENT */
+.box {
+    position: relative; /* needed for overlay */
+    flex: 1;
+    border-left: 3px solid #005BAC;
+    border-top: 3px solid #005BAC;
+    border-bottom: 3px solid #005BAC;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+  
+    overflow: hidden;
+}
+
+.box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+/* Caption overlay */
+.box figcaption {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 91, 172, 0.6); /* semi-transparent blue */
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px;
+    text-align: center;
+    transition: all 0.3s ease; /* smooth hover effect */
+    opacity: 0; /* initially hidden */
+}
+
+/* Show caption on hover */
+.box:hover figcaption {
+    opacity: 1;
+}
+
+        /* --- WHY DON BOSCO --- */
+        .why-don { padding: 80px 10%; text-align: center; background: var(--light-gray); }
+        .why-don h2 { font-family: 'Playfair Display', serif; font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 20px; }
+        .why-don p { font-size: 1.3rem; line-height: 1.7; font-style: italic; color: #444; max-width: 850px; margin: 0 auto; white-space: pre-line; }
+
+        /* --- GALLERY --- */
+        .gallaryh2 { text-align: center; font-family: 'Playfair Display', serif; font-size: 2.5rem; margin-top: 80px;margin-bottom: 200px; }
+        .gallery-container { position: relative; width: 100%; max-width: 700px; height: 450px; margin: 40px auto; }
+        .gallery { position: relative; width: 100%; height: 100%; }
+        .gallery img { position: absolute; width: 350px; height: 450px; object-fit: cover; border-radius: 10px; transition: 0.5s; box-shadow: 0 10px 20px rgba(0,0,0,0.2); left: 50%; margin-left: -175px; }
+        .img1 { transform: rotate(-15deg) translateX(-140px) scale(0.8); z-index: 1; }
+        .img2 { transform: rotate(-8deg) translateX(-70px) scale(0.9); z-index: 2; }
+        .img3 { transform: rotate(0deg) scale(1); z-index: 3; } 
+        .img4 { transform: rotate(8deg) translateX(70px) scale(0.9); z-index: 2; }
+        .img5 { transform: rotate(15deg) translateX(140px) scale(0.8); z-index: 1; }
+        .active { transform: rotate(0deg) scale(1.1) translateY(-20px) !important; z-index: 10 !important; }
+
+        /* --- TESTIMONY --- */
+        #testimony-section { position: relative; width: 100%; height: 110vh; background: #000; display: flex; flex-direction: column; }
+        .alum-btn { background: #f4f4f4; border: 3px solid var(--primary-blue); padding: 10px 20px; font-weight: 900; cursor: pointer; margin: 5px; box-shadow: 3px 3px 0px var(--primary-blue); }
+        .active-alum { background: var(--primary-blue) !important; color: white !important; box-shadow: 3px 3px 0px var(--gold) !important; }
+        #mute-btn { position: absolute; bottom: 40px; right: 40px; z-index: 30; background: rgba(11, 61, 145, 0.9); color: white; border: 2px solid var(--gold); padding: 12px 25px; border-radius: 50px; cursor: pointer; }
+
+        /* --- PRINCIPAL --- */
+        .principal { padding: 100px 10%; text-align: center;margin-top:100px; }
+        .principal img { height: 220px; width: 220px; border-radius: 50%; border: 6px solid var(--primary-blue); margin-bottom: 20px; object-fit: cover; }
+    </style>
+</head>
+<body>
+
+<section class="section">
+
+ <!-- TOP RIGHT LOGO + NAME -->
+<div class="top-right">
+    <div class="logo-name">
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Don_Bosco_logo.png" alt="Logo">
+        <div class="school-name">Donbosco General School</div>
+    </div>
+    <ul class="nav-links">
+        <li>Students life</li>
+        <li>About</li>
+      <li>Search</li>
+     
+    </ul>
+            <select class="nav-linkselect">
+                <option value="photo">Gallery</option>
+                <option value="video">Video</option>
+            </select>
+        </li>
+    </ul>
+</div>
+
+    <main>
+        <!-- Don Bosco Image -->
+        <img class="bosco-img" src="https://upload.wikimedia.org/wikipedia/commons/7/7e/Saint_John_Bosco.jpg" alt="Don Bosco">
+
+        <!-- Motto -->
+        <div class="text">
+            “Reason, Religion, and Loving-Kindness guide us to educate with understanding,
+            inspire faith, and nurture every student with care.”
+        </div>
+    </main>
+
+    <!-- ASIDE HAMBURGER -->
+
+    <div id="hamburger">≡</div>
+
+
+<!-- Full screen overlay -->
+<div id="overlay-menu">
+    <div class="close-btn" id="close-menu">&times;</div>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Admissions</a></li>
+            <li><a href="#">Students Life</a></li>
+            <li><a href="#">Gallery</a></li>
+            <li><a href="#">Contact</a></li>
+              <li><a href="#">philosophy</a></li>
+                <li><a href="#">Mission</a></li>
+                  <li><a href="#">History</a></li>
+                    <li><a href="#">vision</a></li>
+                      <li><a href="#">Contact</a></li>
+                        <li><a href="#">Contact</a></li>
+                          <li><a href="#">Contact</a></li>
+              <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+</div>
+
+<script>
+    const hamburger = document.getElementById('hamburger');
+    const overlay = document.getElementById('overlay-menu');
+    const closeBtn = document.getElementById('close-menu');
+
+    hamburger.addEventListener('click', () => {
+        overlay.style.width = '100%';
+    });
+
+    closeBtn.addEventListener('click', () => {
+        overlay.style.width = '0';
+    });
+</script></section>
+
+
+<section class="about reveal" id="about-link">
+    <h2>About Our School</h2>
+    <div class="about-text">
+        <p>Don Bosco General School is committed to providing quality education that nurtures both the mind and character of students. Inspired by the values of Saint John Bosco, we focus on academic excellence, discipline, and moral development to ensure every child reaches their full potential.</p>
+        <button class="btn-luxury">Learn More</button>
+    </div>
+</section>
+</section>
+<section class="three-boxes">
+  <div class="box"><img src="./photo_5897719606653160982_y.jpg"><figcaption><h2>Our Curriculum</h2><p>Explore our curriculum, courses, and academic programs designed to foster excellence</p></figcaption></div>
+  <div class="box"><img src="./photo_5897719606653160982_y.jpg"><figcaption><h2>Admissions</h2><p>Learn how to enroll at Donbosco General School and become part of our learning family</p></figcaption></div>
+  <div class="box"><img src="./photo_5897719606653160982_y.jpg"><figcaption><h2>. Events & Activities</h2><p>Check out upcoming events, competitions, and extracurricular activities</p></figcaption></div>
+</section>
+<section class="why-don reveal">
+    <h2>Why Don Bosco?</h2>
+    <p>Where reason lights the mind, and faith warms the heart,
+    Where kindness guides each hand and learning is an art.
+    At Don Bosco, we grow in knowledge, courage, and care,
+    Preparing young souls for a world they’re ready to share.</p>
+</section>
+
+<h2 class="gallaryh2 reveal">School Gallery</h2>
+<div class="gallery-container reveal">
+    <div class="gallery">
+        <img src="https://picsum.photos/id/1011/700/450" class="img1">
+        <img src="https://picsum.photos/id/1015/700/450" class="img2">
+        <img src="https://picsum.photos/id/1016/700/450" class="img3 active">
+        <img src="https://picsum.photos/id/1020/700/450" class="img4">
+        <img src="https://picsum.photos/id/1024/700/450" class="img5">
+    </div>
+    <div style="text-align:center; margin-top: 30px;">
+        <button class="btn-luxury" onclick="prevSlide()" style="margin-right:10px;">❮ Prev</button>
+        <button class="btn-luxury" onclick="nextSlide()">Next ❯</button>
+    </div>
+</div>
+
+<section id="testimony-section">
+    <div style="background: #fff; padding: 40px 0; text-align: center; border-bottom: 5px solid #0b3d91;">
+        <h2 style="font-family: 'Playfair Display'; font-size: 2.5rem; margin-bottom: 20px;">Alumni Testimonies</h2>
+        <div class="testimony-nav">
+            <button onclick="changeAlumni('abeb', this)" class="alum-btn active-alum">Abeb ('18)</button>
+            <button onclick="changeAlumni('kebe', this)" class="alum-btn">Kebe ('19)</button>
+            <button onclick="changeAlumni('sara', this)" class="alum-btn">Sara ('20)</button>
+            <button onclick="changeAlumni('john', this)" class="alum-btn">John ('17)</button>
+            <button onclick="changeAlumni('mari', this)" class="alum-btn">Maria ('21)</button>
+            <button onclick="changeAlumni('davi', this)" class="alum-btn">David ('16)</button>
+        </div>
+    </div>
+    <div style="flex-grow:1; position:relative; background:#000;">
+        <video id="testimony-video" autoplay muted loop playsinline style="width:100%; height:100%; object-fit:cover;">
+            <source id="alum-video-source" src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+        </video>
+        <button id="mute-btn" onclick="toggleMute()">🔊 Unmute Testimony</button>
+    </div>
+</section>
+
+<section class="principal reveal">
+    <img src="./photo_5897719606653160982_y.jpg" alt="principal">
+    <p><h2>
+        Welcome to DonBosco</h2>
+At [School Name], we believe that education is a journey of discovery, growth, and inspiration. Our mission is to provide every student with the tools, guidance, and encouragement
+ they need to reach their full potential — academically, socially, and personally.</p>
+</section>
+
+<script>
+    const lenis = new Lenis();
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    window.addEventListener('scroll', () => {
+        document.querySelectorAll('.reveal').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 100) el.classList.add('active');
+        });
+    });
+
+    const alumniVideos = {
+        abeb: "https://vjs.zencdn.net/v/oceans.mp4", 
+        kebe: "https://www.w3schools.com/html/movie.mp4",
+        sara: "https://www.w3schools.com/html/mov_bbb.mp4",
+        john: "https://vjs.zencdn.net/v/oceans.mp4", 
+        mari: "https://www.w3schools.com/html/movie.mp4",
+        davi: "https://www.w3schools.com/html/mov_bbb.mp4"
+    };
+
+    function changeAlumni(name, btn) {
+        const video = document.getElementById('testimony-video');
+        document.getElementById('alum-video-source').src = alumniVideos[name];
+        video.load(); video.play();
+        document.querySelectorAll('.alum-btn').forEach(b => b.classList.remove('active-alum'));
+        btn.classList.add('active-alum');
+    }
+
+    function toggleMute() {
+        const v = document.getElementById('testimony-video');
+        v.muted = !v.muted;
+        document.getElementById('mute-btn').innerHTML = v.muted ? "🔊 Unmute Testimony" : "止 Mute Sound";
+    }
+
+    let currentIdx = 2;
+    const imgs = document.querySelectorAll('.gallery img');
+    function updateGallery() {
+        imgs.forEach((img, i) => {
+            img.className = `img${i+1}${i === currentIdx ? ' active' : ''}`;
+        });
+    }
+    function nextSlide() { currentIdx = (currentIdx + 1) % 5; updateGallery(); }
+    function prevSlide() { currentIdx = (currentIdx - 1 + 5) % 5; updateGallery(); }
+</script>
+</body>
+</html>
