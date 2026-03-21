@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Don Bosco | The Full Legacy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root { --db-blue: #004a99; --db-gold: #ffcc00; }
+        body { background-color: #ffffff; margin: 0; padding: 0; scroll-behavior: smooth; font-family: 'Georgia', serif; }
+
+        /* Slideshow Animation */
+        .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 2s ease-in-out; background-size: cover; background-position: center; }
+        .slide.active { opacity: 1; }
+
+        /* Navigation */
+        nav { background: var(--db-blue); border-bottom: 4px solid var(--db-gold); }
+
+        /* Reveal on Scroll */
+        .reveal { opacity: 0; transform: translateY(40px); transition: 1.2s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* Accents */
+        .gold-bar { width: 60px; height: 4px; background: var(--db-gold); margin: 1.5rem 0; }
+        .section-header { font-family: 'Arial Black', sans-serif; color: var(--db-blue); text-transform: uppercase; }
+    </style>
+</head>
+<body class="text-gray-800">
+
+    <nav class="fixed top-0 w-full z-50 px-10 py-5 flex justify-between items-center text-white">
+        <div class="text-2xl font-black tracking-widest uppercase">Don Bosco</div>
+        <div class="hidden md:flex gap-8 text-[10px] font-bold tracking-[0.2em]">
+            <a href="#history" class="hover:text-[--db-gold]">HISTORY</a>
+            <a href="#philosophy" class="hover:text-[--db-gold]">PHILOSOPHY</a>
+            <a href="#mission" class="hover:text-[--db-gold]">MISSION & VISION</a>
+            <a href="#values" class="hover:text-[--db-gold]">VALUES</a>
+            <div class="text-[--db-gold]">EN | አማ</div>
+        </div>
+    </nav>
+
+    <header class="relative h-screen w-full overflow-hidden flex items-center justify-center">
+        <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2000');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e087563f0271?q=80&w=2000');"></div>
+        <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1523050335102-c6744729ea2f?q=80&w=2000');"></div>
+        
+        <div class="absolute inset-0 bg-black/50"></div>
+        
+        <div class="relative z-10 text-center text-white px-6">
+            <h1 class="text-6xl md:text-8xl font-black mb-4">OUR LEGACY</h1>
+            <p class="text-xl md:text-2xl font-light italic opacity-90 max-w-2xl mx-auto">"An education that prepares the soul and the mind."</p>
+        </div>
+    </header>
+
+    <main class="py-24 max-w-6xl mx-auto px-6 space-y-40">
+
+        <section id="history" class="grid md:grid-cols-2 gap-16 items-start reveal">
+            <div>
+                <h2 class="section-header text-5xl">Our History</h2>
+                <div class="gold-bar"></div>
+                <p class="text-lg text-gray-600 leading-relaxed mb-6">
+                    In the mid-19th century, Turin, Italy, was a place of great social change. It was here that Saint John Bosco, a humble priest, saw the struggle of young workers and street children. 
+                </p>
+                <p class="text-lg text-gray-600 leading-relaxed">
+                    He didn't just offer them food; he offered them a future. By establishing the Salesian Society, he created a network of schools and homes that transformed thousands of lives, eventually spreading to every corner of the globe.
+                </p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1000" class="rounded-3xl shadow-2xl" alt="Don Bosco History">
+        </section>
+<section id="philosophy" class="bg-gray-50 p-12 md:p-20 rounded-[3rem] reveal text-center">
+            <h2 class="section-header text-4xl mb-12">The Preventive System</h2>
+            <div class="grid md:grid-cols-3 gap-12">
+                <div>
+                    <h3 class="text-2xl font-bold text-[--db-blue] mb-4">Reason</h3>
+                    <p class="text-gray-500 leading-relaxed">We guide through understanding. Every rule is explained with logic and every student is treated with dignity.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-[--db-gold] mb-4">Religion</h3>
+                    <p class="text-gray-500 leading-relaxed">A spiritual compass that gives depth to knowledge and anchors the heart in eternal truths.</p>
+                </div>
+                <div>
+                    <h3 class="text-2xl font-bold text-[--db-blue] mb-4">Loving-Kindness</h3>
+                    <p class="text-gray-500 leading-relaxed">The heart of our pedagogy. It is not enough to love the young; they must *know* they are loved.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="mission" class="grid md:grid-cols-2 gap-20 items-center reveal">
+            <div class="border-l-8 border-[--db-gold] pl-10">
+                <h2 class="section-header text-4xl mb-4">Our Mission</h2>
+                <p class="text-gray-600 italic mb-10">To empower the youth to become honest citizens and faithful servants of their community through holistic education.</p>
+                
+                <h2 class="section-header text-4xl mb-4">Our Vision</h2>
+                <p class="text-gray-600 italic">To be a sanctuary of learning where every young person discovers their unique path to excellence.</p>
+            </div>
+            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1000" class="rounded-3xl shadow-2xl" alt="Mission Vision">
+        </section>
+
+        <section id="values" class="reveal">
+            <div class="text-center mb-16">
+                <h2 class="section-header text-5xl">Core Values</h2>
+            </div>
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
+                <div class="p-8 border border-gray-100 rounded-2xl hover:bg-[--db-blue] hover:text-white transition group">
+                    <h4 class="font-black mb-2">Integrity</h4>
+                    <p class="text-sm opacity-60 group-hover:opacity-100 transition">Walking the talk in all we do.</p>
+                </div>
+                <div class="p-8 border border-gray-100 rounded-2xl hover:bg-[--db-gold] hover:text-[--db-blue] transition group">
+                    <h4 class="font-black mb-2">Respect</h4>
+                    <p class="text-sm opacity-60 group-hover:opacity-100 transition">Honoring the dignity of all.</p>
+                </div>
+                <div class="p-8 border border-gray-100 rounded-2xl hover:bg-[--db-blue] hover:text-white transition group">
+                    <h4 class="font-black mb-2">Family</h4>
+                    <p class="text-sm opacity-60 group-hover:opacity-100 transition">Creating a home for everyone.</p>
+                </div>
+                <div class="p-8 border border-gray-100 rounded-2xl hover:bg-[--db-gold] hover:text-[--db-blue] transition group">
+                    <h4 class="font-black mb-2">Service</h4>
+                    <p class="text-sm opacity-60 group-hover:opacity-100 transition">Giving back to our world.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+<footer class="bg-[--db-blue] py-20 text-center text-white">
+        <h3 class="text-3xl font-black mb-4 tracking-widest uppercase">Don Bosco</h3>
+        <p class="text-xs opacity-50 tracking-[0.4em] mb-10 italic">"Educating the heart, shaping the world."</p>
+        <div class="flex justify-center gap-10 text-[10px] font-bold tracking-widest border-t border-white/10 pt-10">
+            <a href="#">CONTACT</a>
+            <a href="#">RESOURCES</a>
+            <a href="#">ARCHIVE</a>
+        </div>
+    </footer>
+
+    <script>
+        // Automatic Slideshow
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        function nextSlide() {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('active');
+        }
+        setInterval(nextSlide, 5000);
+
+        // Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) entry.target.classList.add('active');
+            });
+        }, { threshold: 0.1 });
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    </script>
+</body>
+</html>
