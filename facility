@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Addis Excellence Academy | Primary & High School</title>
+    <!-- Modern Fonts -->
+    <link href="https://fonts.googleapis.com" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #003366; /* Formal Blue */
+            --sky-blue: #00A3FF;     /* Energetic Blue */
+            --gold: #f9cc0b;
+            --gold:  #f9cc0b;
+            ---gold:  #f9cc0b;
+            --white: #ffffff;
+            --soft-bg: #f8fafc;
+            --glass: rgba(255, 255, 255, 0.9);
+        }
+
+        /* Basic Setup */
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; scroll-behavior: smooth; }
+        body { background: var(--soft-bg); color: #333; overflow-x: hidden; }
+        h1, h2, h3, .logo { font-family: 'Montserrat', sans-serif; }
+
+        /* Navigation */
+        nav {
+            background: var(--glass);
+            backdrop-filter: blur(10px);
+            padding: 15px 5%;
+            display: flex; justify-content: space-between; align-items: center;
+            position: sticky; top: 0; z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+        }
+        .logo { font-size: 1.5rem; color: var(--primary-blue); font-weight: 800; }
+        .nav-links { display: flex; list-style: none; }
+        .nav-links li { margin-left: 20px; }
+        .nav-links a { text-decoration: none; color: var(--primary-blue); font-weight: 600; font-size: 0.9rem; transition: 0.3s; }
+        .nav-links a:hover { color: var(--sky-blue); }
+
+        /* Hero Section */
+        .hero {
+            height: 80vh;
+            background: linear-gradient(rgba(0,51,102,0.6), rgba(0,51,102,0.6)), 
+                        url('https://images.unsplash.com');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            color: white; text-align: center; padding: 0 20px;
+        }
+        .hero h1 { font-size: 4rem; margin-bottom: 10px; }
+        .hero p { font-size: 1.3rem; max-width: 800px; margin-bottom: 30px; }
+
+        /* General Section Layout */
+        section { padding: 80px 5%; }
+        .section-title { text-align: center; margin-bottom: 50px; }
+        .section-title h2 { font-size: 2.5rem; color: var(--primary-blue); text-transform: uppercase; }
+        .divider { width: 100px; height: 5px; background: var(--ethiopia-gold); margin: 10px auto; border-radius: 5px; }
+
+        /* Facility Cards Grid */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        .card {
+            background: var(--white);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: 0.4s;
+            border-bottom: 5px solid transparent;
+        }
+        .card:hover { transform: translateY(-10px); border-bottom: 5px solid var(--sky-blue); }
+        .card-img { height: 200px; width: 100%; object-fit: cover; }
+        .card-content { padding: 25px; }
+        .card-tag { background: var(--primary-blue); color: white; padding: 4px 12px; border-radius: 20px; font-size: 0.7rem; font-weight: bold; margin-bottom: 10px; display: inline-block; }
+        .card h3 { color: var(--primary-blue); margin-bottom: 10px; }
+
+        /* Sports Complex (Unique Layout) */
+        .sports-strip { background: var(--primary-blue); color: white; padding: 60px 5%; }
+        .sports-grid { display: flex; flex-wrap: wrap; justify-content: space-around; text-align: center; gap: 20px; }
+        .sport-item i { font-size: 2.5rem; color: var(--ethiopia-gold); display: block; margin-bottom: 10px; }
+
+        /* Admin/Staff Section */
+        .staff-section { background: #eef2f7; padding: 80px 5%; }
+
+        /* Ethiopian Spirit Strip */
+        .ethio-spirit { height: 15px; display: flex; }
+        .green { flex:1; background: var(--ethiopia-green); }
+        .yellow { flex:1; background: var(--ethiopia-gold); }
+        .red { flex:1; background: var(--ethiopia-red); }
+
+        /* Footer */
+        footer { background: #011222; color: #fff; padding: 80px 5% 20px; }
+        .footer-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 40px; margin-bottom: 40px; }
+        .footer-col h4 { margin-bottom: 20px; border-left: 4px solid var(--ethiopia-gold); padding-left: 10px; }
+        .footer-bottom { border-top: 1px solid #222; padding-top: 20px; text-align: center; font-size: 0.8rem; color: #777; }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <a href="#" class="logo">ADDIS ACADEMY</a>
+        <ul class="nav-links">
+            <li><a href="#primary">Primary</a></li>
+            <li><a href="#highschool">High School</a></li>
+            <li><a href="#sports">Sports & Arts</a></li>
+            <li><a href="#administration">Administration</a></li>
+            <li><a href="#spiritual">Campus Life</a></li>
+        </ul>
+    </nav>
+
+    <header class="hero">
+        <h1>Excellence in the Heart of Addis</h1>
+        <p>A safe, modern, and spiritual environment for the leaders of tomorrow.</p>
+        <a href="#primary" style="background:var(--ethiopia-gold); padding:15px 40px; color:#000; font-weight:800; border-radius:50px; text-decoration:none;">Explore Facilities</a>
+    </header>
+
+    <div class="ethio-spirit">
+        <div class="green"></div><div class="yellow"></div><div class="red"></div>
+    </div>
+
+    <!-- PRIMARY SCHOOL SECTION -->
+    <section id="primary">
+        <div class="section-title">
+            <h2>Primary School Facilities</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="grid-container">
+            <div class="card">
+                <img src="https://images.unsplash.com" class="card-img">
+                <div class="card-content">
+                    <span class="card-tag">LEARNING</span>
+                    <h3>Large Classrooms</h3>
+                    <p>Spacious, light-filled rooms with ergonomic furniture for our primary learners.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com" class="card-img">
+                <div class="card-content">
+                    <span class="card-tag">TECHNOLOGY</span>
+                    <h3>Large ICT Hub</h3>
+                    <p>Modern computers and tablets for early digital literacy.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com" class="card-img">
+                <div class="card-content">
+                    <span class="card-tag">SCIENCE</span>
+                    <h3>Primary Laboratory</h3>
+                    <p>Safe, hands-on experimentation space for young scientists.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- HIGH SCHOOL SECTION -->
+    <section id="highschool" style="background: #fff;">
+        <div class="section-title">
+            <h2>High School Facilities</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="grid-container">
+            <div class="card">
+                <img src="https://images.unsplash.com" class="card-img">
+                <div class="card-content">
+                    <h3>Physics & Chem Labs</h3>
+                    <p>Standard specialized laboratories for advanced physics, chemistry, and biology research.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com" class="card-img">
+                <div class="card-content">
+                    <h3>Pedagogy & Library</h3>
+                    <p>A quiet, vast library and dedicated pedagogy room for high-level study.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com" class="card-img">
+                <div class="card-content">
+                    <h3>Guidance (Psychiatrist)</h3>
+                    <p>Dedicated professional support for student mental health and career guidance.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SPORTS COMPLEX SECTION -->
+    <section id="sports" class="sports-strip">
+        <div class="section-title">
+            <h2 style="color: white;">Standard Sports Complex</h2>
+            <p>Developing Talent through Professional Infrastructure</p>
+        </div>
+        <div class="sports-grid">
+            <div class="sport-item"><h3>2 Foot-ball Fields</h3><p>Full-size standard grass fields</p></div>
+            <div class="sport-item"><h3>Basketball Court</h3><p>Professional outdoor courts</p></div>
+            <div class="sport-item"><h3>Volleyball Court</h3><p>Dedicated competition area</p></div>
+            <div class="sport-item"><h3>Handball Court</h3><p>Standard hard-court surface</p></div>
+        </div>
+    </section>
+
+    <!-- DINING & MEETING -->
+    <section id="dining">
+        <div class="section-title">
+            <h2>Campus Dining & Meetings</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="grid-container">
+            <div class="card">
+                <img src="https://images.unsplash.com" class="card-img">
+                <div class="card-content">
+                    <h3>2 Large Lunch Halls</h3>
+                    <p>Hygienic and spacious dining areas for Primary and High School separately.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com" class="card-img">
+                <div class="card-content">
+                    <h3>Meeting Halls</h3>
+                    <p>Professional halls for parent meetings, student assemblies, and events.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com" class="card-img">
+                <div class="card-content">
+                    <h3>Modern Cafeteria</h3>
+                    <p>Separate, high-standard cafeteria sections for both students and teachers.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- STAFF & SPIRITUAL -->
+    <section id="administration" class="staff-section">
+        <div class="section-title">
+            <h2>Our Professionals</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="grid-container">
+            <div class="card">
+                <div class="card-content">
+                    <h3>Comfortable Offices</h3>
+                    <p>Spacious finance offices and comfortable teacher lounges to ensure staff well-being.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Janitorial Services</h3>
+                    <p>Professional janitors with dedicated storage to keep the school white and clean.</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-content">
+                    <h3>Hygiene First</h3>
+                    <p>Modern, sparkling white toilets (separate for Male and Female) maintained 24/7.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GARDEN & CHURCH -->
+    <section id="spiritual">
+        <div class="section-title">
+            <h2>Meditation & Spirit</h2>
+            <div class="divider"></div>
+        </div>
+        <div class="grid-container">
+            <div class="card">
+                <img src="https://images.unsplash.com" class="card-img">
+                <div class="card-content">
+                    <h3>Large Meditation Garden</h3>
+                    <p>A peaceful green space for students to discuss, study, and reflect with friends.</p>
+                </div>
+            </div>
+            <div class="card">
+                <img src="https://images.unsplash.com" class="card-img">
+                <div class="card-content">
+                    <h3>On-Campus Church</h3>
+                    <p>A spiritual center for prayer and moral growth within the school grounds.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-col">
+                <h4 style="color:white;">Addis Academy</h4>
+                <p>Addis Ababa, Ethiopia</p>
+                <p>Leading education through excellence and spirit.</p>
+            </div>
+            <div class="footer-col">
+                <h4 style="color:white;">Quick Links</h4>
+                <p>Admissions</p>
+                <p>School Bus Routes</p>
+                <p>Career Opportunities</p>
+            </div>
+            <div class="footer-col">
+                <h4 style="color:white;">Contact</h4>
+                <p>Phone: +251 11 XXX XXXX</p>
+                <p>Email: info@addisacademy.edu.et</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            &copy; 2024 Addis Excellence International Academy. Designed for a brighter future.
+        </div>
+    </footer>
+
+</body>
+</html>
