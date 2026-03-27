@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don Bosco Mekanissa | Home</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
+
+    <style>
+        :root {
+            --primary-blue: #0b3d91;
+            --accent-gold: #d4af37;
+            --dark-blue: #082d6b;
+            --soft-white: #f4f7f6;
+            --glass: rgba(255, 255, 255, 0.15);
+        }
+
+        html.lenis { height: auto; }
+        .lenis.lenis-smooth { scroll-behavior: auto; }
+        body { margin: 0; font-family: 'Lato', sans-serif; background: white; color: #333; overflow-x: hidden; scroll-behavior: smooth; }
+
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* --- HEADER (UNTOUCHED) --- */
+        header {
+            position: fixed; top: 0; width: 100%; height: 80px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 5%; background: var(--primary-blue); z-index: 2000; box-sizing: border-box;
+        }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-gold); }
+        .school-name { font-family: 'Playfair Display', serif; color: white; font-size: 1.1rem; font-weight: 700; }
+        .nav-right { display: flex; align-items: center; gap: 20px; }
+        .search-engine { display: flex; align-items: center; background: var(--glass); padding: 5px 12px; border-radius: 30px; border: 1px solid rgba(255,255,255,0.3); }
+        .search-engine input { background: none; border: none; color: white; outline: none; width: 100px; }
+        #hamburger { font-size: 2rem; color: white; cursor: pointer; z-index: 3000; }
+
+        /* HAMBURGER MENU OVERLAY */
+        #menu-overlay {
+            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+            background: var(--dark-blue); z-index: 2500; transition: 0.5s ease;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        #menu-overlay.active { right: 0; }
+        #menu-overlay a { color: white; font-size: 2.5rem; text-decoration: none; margin: 15px 0; font-family: 'Playfair Display'; }
+
+        /* --- HERO (UNTOUCHED) --- */
+        .hero { 
+            height: 100vh; width: 100%; 
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.4)), url('https://images.unsplash.com/photo-1523050853064-db019a2ee6f4?auto=format&fit=crop&w=1920'); 
+            background-size: cover; background-position: center; 
+            display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; color: white; 
+        }
+        .hero h1 { font-family: 'Playfair Display', serif; font-size: 5rem; margin: 0; }
+
+        /* --- NEW MAGAZINE STYLE GRID (7 IMAGES) --- */
+        .grid-container {
+            padding: 80px 5%;
+            background: #fff;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px 30px;
+        }
+
+        .grid-item { 
+            display: flex; 
+            flex-direction: column; 
+            text-decoration: none;
+            transition: 0.4s ease;
+        }
+
+        .image-box { width: 100%; overflow: hidden; border-radius: 4px; }
+        .image-box img { width: 100%; height: 100%; object-fit: cover; transition: 0.5s ease; }
+        .grid-item:hover img { transform: scale(1.03); }
+
+        .content-box { padding-top: 20px; }
+        .content-box h3 { 
+            margin: 0 0 10px; 
+            font-family: 'Playfair Display'; 
+            color: #111; 
+            font-size: 1.8rem; 
+            line-height: 1.2;
+            font-weight: 800;
+        }
+        .content-box p { margin: 0; font-size: 1rem; color: #444; line-height: 1.5; }
+
+        /* MASONRY SPANS */
+        .item-1 { grid-column: 1 / 7; } 
+        .item-1 .image-box { height: 400px; }
+
+        .item-2 { grid-column: 7 / 10; } 
+        .item-2 .image-box { height: 550px; }
+
+        .item-3 { grid-column: 10 / 13; } 
+        .item-3 .image-box { height: 300px; }
+
+        .item-4 { grid-column: 1 / 4; margin-top: -80px; } 
+        .item-4 .image-box { height: 350px; }
+
+        .item-5 { grid-column: 4 / 7; margin-top: -80px; }
+        .item-5 .image-box { height: 250px; }
+
+        .item-6 { grid-column: 7 / 13; } 
+        .item-6 .image-box { height: 350px; }
+
+        .item-7 { grid-column: 1 / 5; } 
+        .item-7 .image-box { height: 300px; }
+
+        /* --- OTHER SECTIONS (UNTOUCHED) --- */
+        .stats-strip { display: flex; justify-content: space-around; background: var(--primary-blue); color: white; padding: 60px 10%; text-align: center; }
+        .stat-box h2 { font-size: 3.5rem; color: var(--accent-gold); margin: 0; font-family: 'Playfair Display'; }
+        
+        .why-section { padding: 100px 15%; text-align: center; background: var(--soft-white); }
+        .why-section h2 { font-family: 'Playfair Display', serif; font-size: 3.5rem; color: var(--primary-blue); }
+
+        .pillar-section { padding: 80px 5%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; background: white; }
+        .pillar-card { border-radius: 15px; overflow: hidden; height: 450px; position: relative; }
+        .pillar-card img { width: 100%; height: 100%; object-fit: cover; }
+        .pillar-info { position: absolute; bottom: 0; width: 100%; padding: 30px; background: rgba(11, 61, 145, 0.9); color: white; box-sizing: border-box; }
+        .pillar-info h4 { margin: 0; font-size: 1.5rem; color: var(--accent-gold); font-family: 'Playfair Display'; }
+
+        .pass-intro { padding: 80px 10% 20px; text-align: center; }
+        .video-container { position: relative; width: 100%; height: 75vh; background: #000; overflow: hidden; }
+        video { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
+        .v-btn { background: rgba(255,255,255,0.1); border: 1px solid white; color: white; padding: 10px 20px; border-radius: 30px; cursor: pointer; }
+        .v-btn.active { background: var(--accent-gold); color: black; border-color: var(--accent-gold); }
+
+        .principal-wrap { padding: 100px 10%; background: var(--soft-white); border-top: 8px solid var(--accent-gold); }
+        .p-flex { display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
+        .p-photo img { width: 100%; max-width: 400px; border-radius: 20px; box-shadow: 15px 15px 0 var(--primary-blue); }
+
+        footer { background: var(--dark-blue); color: white; padding: 80px 5% 40px; }
+        .footer-main { display: grid; grid-template-columns: 1.5fr 1fr 1.5fr; gap: 50px; }
+        .map-frame { width: 100%; height: 250px; border-radius: 10px; border: 2px solid var(--accent-gold); overflow: hidden; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-area">
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Don_Bosco_logo.png">
+        <div class="school-name">Don Bosco Mekanissa</div>
+    </div>
+    <div class="nav-right">
+        <div class="search-engine"><input type="text" placeholder="Search..."><button style="background:none; border:none; color:var(--accent-gold); cursor:pointer;">🔍</button></div>
+        <div id="hamburger" onclick="toggleMenu()">☰</div>
+    </div>
+</header>
+
+<div id="menu-overlay">
+    <a href="#" onclick="toggleMenu()">Home</a>
+    <a href="#" onclick="toggleMenu()">Spirituality</a>
+    <a href="#" onclick="toggleMenu()">Technical Programs</a>
+    <a href="#" onclick="toggleMenu()">Admissions</a>
+    <a href="#" onclick="toggleMenu()">Contact Us</a>
+</div>
+
+<section class="hero">
+    <h1>Don Bosco Mekanissa</h1>
+    <p>“Educating with Reason, Religion, and Loving-Kindness”</p>
+</section>
+
+<section class="grid-container">
+    <div class="grid-item item-1">
+        <div class="image-box"><img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&w=800"></div>
+        <div class="content-box">
+            <h3>She shoots... she scores! Girls hockey wins first title.</h3>
+            <p>Our students demonstrate excellence both in the classroom and on the field, bringing home the regional championship.</p>
+        </div>
+    </div>
+
+    <div class="grid-item item-2">
+        <div class="image-box"><img src="https://images.unsplash.com/photo-1544427920-c49ccfb85579?auto=format&fit=crop&w=600"></div>
+        <div class="content-box">
+            <h3>Congratulations to our newly accepted students!</h3>
+            <p>Say yes to the Don Bosco legacy and join our family for the 2026 academic year.</p>
+        </div>
+    </div>
+
+    <div class="grid-item item-3">
+        <div class="image-box"><img src="https://images.unsplash.com/photo-1511467687858-23d96c32e4ae?auto=format&fit=crop&w=600"></div>
+        <div class="content-box">
+            <h3>"I never dreamed of doing this."</h3>
+            <p>Read about Anna’s journey from our technical workshops to a global career in engineering.</p>
+        </div>
+    </div>
+
+    <div class="grid-item item-4">
+        <div class="image-box"><img src="https://images.unsplash.com/photo-1509062522246-3755977927d7?auto=format&fit=crop&w=600"></div>
+        <div class="content-box">
+            <h3>Modern Workshops</h3>
+            <p>Industry-standard tools for real-world skills.</p>
+        </div>
+    </div>
+
+    <div class="grid-item item-5">
+        <div class="image-box"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600"></div>
+        <div class="content-box">
+            <h3>Technical Growth</h3>
+            <p>Exploring innovation and hands-on discovery.</p>
+        </div>
+    </div>
+
+    <div class="grid-item item-6">
+        <div class="image-box"><img src="https://images.unsplash.com/photo-1524178232363-1fb2b075b655?auto=format&fit=crop&w=800"></div>
+        <div class="content-box">
+            <h3>Our Swimming Team takes the gold in regional finals.</h3>
+            <p>Hard work and dedication lead to a historic victory for our athletes this season.</p>
+        </div>
+    </div>
+
+    <div class="grid-item item-7">
+        <div class="image-box"><img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600"></div>
+        <div class="content-box">
+            <h3>Global Connections</h3>
+            <p>Building a future that spans across borders.</p>
+        </div>
+    </div>
+</section>
+
+<section class="stats-strip reveal">
+    <div class="stat-box"><h2>25+</h2><p>Years of Legacy</p></div>
+    <div class="stat-box"><h2>1,500+</h2><p>Current Students</p></div>
+    <div class="stat-box"><h2>100%</h2><p>Salesian Dedication</p></div>
+</section>
+
+<section class="why-section reveal">
+    <h2>Why Don Bosco?</h2>
+    <div style="font-size: 1.3rem; line-height: 2; color: #444; max-width: 900px; margin: 30px auto; font-style: italic;">
+        "Because we believe education is a matter of the heart. While others teach the mind, we form the person."
+    </div>
+</section>
+
+<section class="pillar-section reveal">
+    <div class="pillar-card">
+        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=600">
+        <div class="pillar-info"><h4>Modern Workshops</h4><p>Hands-on training with industry tools.</p></div>
+    </div>
+    <div class="pillar-card">
+        <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644?auto=format&fit=crop&w=600">
+        <div class="pillar-info"><h4>Holistic Growth</h4><p>Academic excellence meets moral character.</p></div>
+    </div>
+    <div class="pillar-card">
+        <img src="https://images.unsplash.com/photo-1523580494863-6f3031224c94?auto=format&fit=crop&w=600">
+        <div class="pillar-info"><h4>Global Alumni</h4><p>Connecting you to a worldwide network.</p></div>
+    </div>
+</section>
+
+<section class="video-container">
+    <video id="vid" autoplay muted loop playsinline><source id="vsrc" src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></video>
+    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;">
+        <div style="pointer-events: auto; display: flex; gap: 15px;">
+            <button class="v-btn active" onclick="changeV('Abebe', 'https://vjs.zencdn.net/v/oceans.mp4', this)">Abebe ('18)</button>
+            <button class="v-btn" onclick="changeV('Marta', 'https://www.w3schools.com/html/movie.mp4', this)">Marta ('21)</button>
+        </div>
+        <h3 id="vname" style="font-family: 'Playfair Display'; font-size: 4rem; color: var(--accent-gold); margin-top: 20px;">Abebe</h3>
+    </div>
+</section>
+
+<section class="principal-wrap reveal">
+    <div class="p-flex">
+        <div class="p-photo"><img src="https://images.unsplash.com/photo-1544717297-fa154da09f5b?auto=format&fit=crop&w=600"></div>
+        <div class="p-text">
+            <h2 style="font-family: 'Playfair Display'; font-size: 3rem; color: var(--primary-blue);">Principal's Message</h2>
+            <p>"Our mission is to make our students good Christians and honest citizens."</p>
+            <div style="font-weight: bold; font-size: 1.5rem; color: var(--primary-blue); margin-top: 20px;">Rev. Father Principal</div>
+        </div>
+    </div>
+</section>
+
+<footer>
+    <div class="footer-main">
+        <div class="footer-col"><h4>Our Mission</h4><p>Don Bosco Mekanissa is dedicated to the holistic formation of young people.</p></div>
+        <div class="footer-col"><h4>Find Us</h4><div class="map-frame"><div style="background:#2c3e50; width:100%; height:100%; display:flex; align-items:center; justify-content:center; color:#bdc3c7;">[ MAP VIEW ]</div></div></div>
+        <div class="footer-col"><h4>Contact</h4><p>📍 Mekanissa Road, Addis Ababa<br>📞 +251 11 321 4321</p></div>
+    </div>
+</footer>
+
+<script>
+    const lenis = new Lenis();
+    function raf(time) { lenis.raf(time); requestAnimationFrame(raf); }
+    requestAnimationFrame(raf);
+
+    function toggleMenu() {
+        document.getElementById('menu-overlay').classList.toggle('active');
+    }
+
+    window.addEventListener('scroll', () => {
+        document.querySelectorAll('.reveal').forEach(el => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 50) el.classList.add('active');
+        });
+    });
+
+    function changeV(name, url, btn) {
+        document.getElementById('vname').innerText = name;
+        const v = document.getElementById('vid');
+        document.getElementById('vsrc').src = url;
+        v.load(); v.play();
+        document.querySelectorAll('.v-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+    }
+</script>
+</body>
+</html>
