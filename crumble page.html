@@ -45,7 +45,36 @@
             display: flex; flex-direction: column; align-items: center; justify-content: center;
         }
         #menu-overlay.active { right: 0; }
-        #menu-overlay a { color: white; font-size: 2.5rem; text-decoration: none; margin: 15px 0; font-family: 'Playfair Display'; }
+        .close-menu {
+    position: absolute;
+    top: 20px;
+    right: 5%;
+    font-size: 3rem;
+    color: var(--db-gold);
+    cursor: pointer;
+    font-family: 'Rowdies', sans-serif;
+    line-height: 1;
+    z-index: 3001;
+}
+        .menu-links {
+        display: flex;
+        flex-wrap: wrap; /* This makes items go to the next line/column */
+        justify-content: center;
+        gap: 20px 40px; /* Vertical and Horizontal spacing */
+        max-width: 800px; /* Keeps the menu from getting too wide */
+        padding: 20px;
+    }
+
+    #menu-overlay a { 
+        color: white; 
+        font-size: 2rem; /* Sized down slightly to fit better */
+        text-decoration: none; 
+        font-family: 'Oswald', sans-serif; 
+        text-transform: uppercase;
+        width: 250px; /* Fixed width so they align in columns */
+        text-align: center;
+        transition: 0.3s;
+    }
 
         /* --- HERO (UNTOUCHED) --- */
         .hero { 
@@ -592,11 +621,19 @@ video {
 </header>
 
 <div id="menu-overlay">
-    <a href="#" onclick="toggleMenu()">Home</a>
-    <a href="#" onclick="toggleMenu()">Spirituality</a>
-    <a href="#" onclick="toggleMenu()">Technical Programs</a>
-    <a href="#" onclick="toggleMenu()">Admissions</a>
-    <a href="#" onclick="toggleMenu()">Contact Us</a>
+    <div class="close-menu" onclick="toggleMenu()">✕</div>
+    <a href="home.html" onclick="toggleMenu()">Home</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+     <a href="students life.html" onclick="toggleMenu()">Students Life</a>
+         <a href="facilities.html" onclick="toggleMenu()">Facilities</a>
+      <a href="sports-info.html" onclick="toggleMenu()">Sports</a>
+        <a href="technology.html" onclick="toggleMenu()">STEM Center</a>
+          <a href="room.html" onclick="toggleMenu()">Room</a>
+           <a href="stuff.html" onclick="toggleMenu()">Stuff</a>
+          <a href="room.html" onclick="toggleMenu()">Room</a>
+ <a href="senior.html" onclick="toggleMenu()">senior</a>
+    <a href="junior.html" onclick="toggleMenu()">Junior</a>
+
 </div>
 
 <section class="hero">
