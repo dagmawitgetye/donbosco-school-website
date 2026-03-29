@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Don Bosco Mekanissa | Home</title>
+    <title>Don Bosco Mekanissa Home</title>
     
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.33/dist/lenis.min.js"></script>
@@ -399,6 +399,64 @@
             .info-side { padding: 20px; }
             .description-scroll { height: 120px; }
         }
+        /* Achievements Section */
+#achievements {
+    background-color: #f0f4f8;
+    padding: 80px 20px;
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+#achievements .container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+#achievements h2 {
+    font-size: 36px;
+    margin-bottom: 40px;
+    color: #1a3d7c;
+}
+
+.achievements-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    gap: 40px;
+}
+
+.achievement-item {
+    flex: 1 1 200px;
+    min-width: 200px;
+    transition: transform 0.3s;
+}
+
+.achievement-item:hover {
+    transform: translateY(-5px);
+}
+
+.achievement-item .icon {
+    font-size: 48px;
+    color: #1a3d7c;
+}
+
+.achievement-item h3 {
+    font-size: 20px;
+    margin: 10px 0;
+}
+
+.achievement-item p {
+    font-size: 16px;
+    color: #555;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .achievements-grid {
+        flex-direction: column;
+        gap: 30px;
+    }
+}
     
         .pillar-section { padding: 80px 5%; display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; background: white; }
         .pillar-card { border-radius: 15px; overflow: hidden; height: 450px; position: relative; }
@@ -406,12 +464,90 @@
         .pillar-info { position: absolute; bottom: 0; width: 100%; padding: 30px; background: rgba(11, 61, 145, 0.9); color: white; box-sizing: border-box; }
         .pillar-info h4 { margin: 0; font-size: 1.5rem; color: var(--accent-gold); font-family: 'Playfair Display'; }
 
-        .pass-intro { padding: 80px 10% 20px; text-align: center; }
-        .video-container { position: relative; width: 100%; height: 75vh; background: #000; overflow: hidden; }
-        video { width: 100%; height: 100%; object-fit: cover; opacity: 0.6; }
-        .v-btn { background: rgba(255,255,255,0.1); border: 1px solid white; color: white; padding: 10px 20px; border-radius: 30px; cursor: pointer; }
-        .v-btn.active { background: var(--accent-gold); color: black; border-color: var(--accent-gold); }
+       .video-container {
+    position: relative;
+    width: 100%;
+    height: 75vh;
+    background: #000;
+    overflow: hidden;
+}
 
+video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0.6;
+}
+
+/* Overlay positioning */
+.video-overlay {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 20px;
+    pointer-events: none;
+}
+
+/* Name on top-left */
+#vname {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    color: var(--accent-gold);
+    pointer-events: auto;
+}
+
+/* Video selection buttons */
+.btn-group {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 15px;
+    pointer-events: auto;
+}
+
+.v-btn {
+    background: rgba(255,255,255,0.1);
+    border: 1px solid white;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 20px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    transition: 0.3s;
+}
+
+.v-btn:hover {
+    background: rgba(255,255,255,0.3);
+}
+
+.v-btn.active {
+    background: var(--accent-gold);
+    color: black;
+    border-color: var(--accent-gold);
+}
+
+/* Mute/Unmute small button */
+#muteBtn {
+    pointer-events: auto;
+    background: rgba(0,0,0,0.5);
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 15px;
+    cursor: pointer;
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    transition: 0.3s;
+}
+
+#muteBtn:hover {
+    background: rgba(0,0,0,0.8);
+}
         .principal-wrap { padding: 100px 10%; background: var(--soft-white); border-top: 8px solid var(--accent-gold); }
         .p-flex { display: flex; gap: 60px; align-items: center; flex-wrap: wrap; }
         .p-photo img { width: 100%; max-width: 400px; border-radius: 20px; box-shadow: 15px 15px 0 var(--primary-blue); }
@@ -571,9 +707,9 @@
       
       <div class="swiper-slide">
         <div class="content-text">
-          <span class="category-tag">OUR MISSION</span>
+          <span class="category-tag"></span>
           <h2>Why Don Bosco Mekanisa?</h2>
-          <p class="author">BY SCHOOL ADMINISTRATION | MARCH 2026</p>
+          <p class="author"></p>
           <hr class="red-line">
           <p class="summary">At Don Bosco, we don't just educate; we transform. Our unique blend of academic excellence and Salesian values creates a foundation that lasts a lifetime...</p>
           <a href="/why-us" class="read-more">READ MORE</a>
@@ -582,11 +718,11 @@
 
       <div class="swiper-slide">
         <div class="content-text">
-          <span class="category-tag">GRADES 1-6</span>
+          <span class="category-tag"></span>
           <h2>A Home That Welcomes</h2>
-          <p class="author">BY PRIMARY DEPT | MARCH 2026</p>
+          <p class="author"></p>
           <hr class="red-line">
-          <p class="summary">Our primary section focuses on holistic growth. Following the preventive system of Reason and Religion, we ensure every child feels safe and inspired...</p>
+          <p class="summary">Where learning sparks curiosity, values guide growth, and every student is encouraged to explore, create, and shine. Join us in a community where excellence, faith, and compassion come together to shape bright futures.</p>
           <a href="/primary" class="read-more">READ MORE</a>
         </div>
       </div>
@@ -606,11 +742,11 @@
 
       <div class="swiper-slide">
         <div class="content-text">
-          <span class="category-tag">GRADES 9-12</span>
+          <span class="category-tag"></span>
           <h2>Future Leaders of Ethiopia</h2>
-          <p class="author">BY SECONDARY DEPT | MARCH 2026</p>
+          <p class="author">OR MISSION</p>
           <hr class="red-line">
-          <p class="summary">Preparing students for the challenges of tomorrow. Our high schoolers lead in science, innovation, and ethical leadership within our community...</p>
+          <p class="summary">To educate with heart and faith, nurturing students to become confident, compassionate leaders who excel academically, grow morally, and positively impact their communities.</p>
           <a href="/high-school" class="read-more">READ MORE</a>
         </div>
       </div>
@@ -630,6 +766,37 @@
   </div>
 
 </div>
+            <div class="achievement-item" style="flex: 1 1 200px; min-width: 200px;">
+
+</section>
+<!-- Achievements Section -->
+<section id="achievements">
+    <div class="container">
+        <h2>Our Achievements</h2>
+        <div class="achievements-grid">
+            <div class="achievement-item">
+                <div class="icon">📚</div>
+                <h3>Top Academic Performers</h3>
+                <p>Students consistently rank among the top in national exams.</p>
+            </div>
+            <div class="achievement-item">
+                <div class="icon">🏆</div>
+                <h3>Champions in Competitions</h3>
+                <p>Debate, science, and sports teams win regional and national awards.</p>
+            </div>
+            <div class="achievement-item">
+                <div class="icon">🎓</div>
+                <h3>Successful Graduates</h3>
+                <p>Alumni thrive in universities and professional fields worldwide.</p>
+            </div>
+            <div class="achievement-item">
+                <div class="icon">🤝</div>
+                <h3>Community Impact</h3>
+                <p>Recognized for leadership and service in youth programs.</p>
+            </div>
+        </div>
+    </div>
+</section>
 
 
 <section class="pillar-section reveal">
@@ -648,15 +815,53 @@
 </section>
 
 <section class="video-container">
-    <video id="vid" autoplay muted loop playsinline><source id="vsrc" src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4"></video>
-    <div style="position: absolute; inset: 0; display: flex; flex-direction: column; justify-content: center; align-items: center; color: white;">
-        <div style="pointer-events: auto; display: flex; gap: 15px;">
-            <button class="v-btn active" onclick="changeV('Abebe', 'https://vjs.zencdn.net/v/oceans.mp4', this)">Abebe ('18)</button>
-            <button class="v-btn" onclick="changeV('Marta', 'https://www.w3schools.com/html/movie.mp4', this)">Marta ('21)</button>
+    <!-- Video element -->
+    <video id="vid" autoplay loop playsinline muted>
+        <source id="vsrc" src="https://vjs.zencdn.net/v/oceans.mp4" type="video/mp4">
+    </video>
+
+    <!-- Overlay content -->
+    <div class="video-overlay">
+        <!-- Name on top-left -->
+        <h3 id="vname">Abebe ('18)</h3>
+
+        <!-- Video selection buttons (bottom-center) -->
+        <div class="btn-group">
+            <button class="v-btn active" onclick="changeV('Abebe (\'18)', 'https://vjs.zencdn.net/v/oceans.mp4', this)">Abebe ('18)</button>
+            <button class="v-btn" onclick="changeV('Marta (\'21)', 'https://www.w3schools.com/html/movie.mp4', this)">Marta ('21)</button>
         </div>
-        <h3 id="vname" style="font-family: 'Playfair Display'; font-size: 4rem; color: var(--accent-gold); margin-top: 20px;">Abebe</h3>
+
+        <!-- Mute/Unmute small button below -->
+        <button id="muteBtn" onclick="toggleMute()">Unmute</button>
     </div>
 </section>
+<script>
+const video = document.getElementById('vid');
+const nameEl = document.getElementById('vname');
+const muteBtn = document.getElementById('muteBtn');
+
+function changeV(name, src, btn) {
+    video.src = src;
+    video.play();
+    video.muted = true; // keep muted initially
+    nameEl.textContent = name;
+
+    document.querySelectorAll('.v-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    muteBtn.textContent = 'Unmute';
+}
+
+function toggleMute() {
+    if (video.muted) {
+        video.muted = false;
+        muteBtn.textContent = 'Mute';
+    } else {
+        video.muted = true;
+        muteBtn.textContent = 'Unmute';
+    }
+}
+</script>
 
 <section class="principal-wrap reveal">
     <div class="p-flex">
