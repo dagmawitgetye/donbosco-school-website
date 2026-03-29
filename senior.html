@@ -10,16 +10,12 @@
             padding: 0;
             box-sizing: border-box;
         }
-        .h22{font-size: 30px;
-        margin-bottom: 10px;
-            color: #FFD700;
-        font-family: 'Wikiki';}
 
         body, html {
             min-height: 100%;
             width: 100%;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #003366; /* Deep Blue */
+            background-color: #003366; 
             color: white;
             line-height: 1.8;
         }
@@ -31,36 +27,79 @@
             width: 100%;
         }
 
-        /* Main Content Section */
+        /* Top Content Section */
         .content-box {
             padding: 80px 25px;
-            max-width: 850px;
+            max-width: 900px;
             text-align: center;
         }
 
         .main-header {
-            font-size: 3.5rem;
+            font-size: 4rem;
             margin-bottom: 30px;
-            color: #FFD700; /* Gold */
+            color: #FFD700;
             text-transform: uppercase;
-            letter-spacing: 4px;
-            font-weight: 800;
+            font-weight: 900;
+            letter-spacing: 2px;
         }
 
         .description-text {
             font-size: 1.25rem;
             margin-bottom: 30px;
             text-align: justify;
-            color: #f0f0f0;
         }
 
-        /* Highlighting the subjects within the text */
         .highlight {
             color: #FFD700;
             font-weight: 600;
         }
 
-        /* Facilities Link Button */
+        /* Testimonials Section at Bottom */
+        .testimonial-section {
+            width: 100%;
+            max-width: 1200px;
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .testimonial-row {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .teacher-card {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(255, 215, 0, 0.2);
+        }
+
+        /* Larger Teacher Images */
+        .teacher-img {
+            width: 180px; /* Increased size */
+            height: 180px; /* Increased size */
+            border-radius: 10px; /* Square with rounded corners for a "Large" feel */
+            object-fit: cover;
+            margin-bottom: 20px;
+            border: 4px solid #FFD700;
+        }
+
+        .teacher-name {
+            color: #FFD700;
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .quote {
+            font-style: italic;
+            font-size: 1rem;
+            opacity: 0.9;
+        }
+
+        /* Facilities Link */
         .facility-btn {
             display: inline-block;
             margin: 40px 0;
@@ -70,26 +109,17 @@
             text-decoration: none;
             font-weight: bold;
             border-radius: 4px;
-            transition: 0.3s ease;
             text-transform: uppercase;
-            letter-spacing: 1px;
         }
 
-        .facility-btn:hover {
-            background-color: white;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-        }
-
-        /* Building Label and Image */
+        /* Building Image */
         .building-label {
             background: #FFD700;
             color: #003366;
             padding: 10px 30px;
             font-weight: bold;
             text-transform: uppercase;
-            font-size: 0.85rem;
             margin-top: 50px;
-            letter-spacing: 1px;
         }
 
         .image-container {
@@ -102,6 +132,11 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+
+        @media (max-width: 900px) {
+            .testimonial-row { grid-template-columns: 1fr; }
+            .teacher-img { width: 150px; height: 150px; }
         }
     </style>
 </head>
@@ -118,34 +153,50 @@
                 specifically <strong>prepare our students for the rigor of Matric</strong>, providing 
                 them with the analytical tools and the resilience needed to excel in their final examinations.
             </p>
-            <h2 class="h22">Curriculum</h2>
 
             <p class="description-text">
                 Our comprehensive curriculum is built on a foundation of core excellence. Students engage deeply 
-                with <span class="highlight">Mathematics</span> through advanced calculus and problem-solving, 
-                master the nuances of <span class="highlight">English</span> literature and communication, 
+                with <span class="highlight">Mathematics</span> through advanced calculus, 
+                master the nuances of <span class="highlight">English</span> literature, 
                 and explore the complexities of the <span class="highlight">Sciences</span> through 
-                hands-on Physics, Chemistry, and Biology. Furthermore, our <span class="highlight">Humanities</span> 
-                program allows for a rich understanding of History and Geography, creating a well-rounded 
-                educational experience.
+                Physics, Chemistry, and Biology. Our <span class="highlight">Humanities</span> 
+                program further ensures a rich understanding of History and Geography.
             </p>
 
             <p class="description-text">
-                Beyond the textbooks, our students enjoy learning with high-quality supplies they can truly 
-                rely on—from modern laboratory kits and artistic mediums to the latest digital resources. 
-                These tools, combined with our world-class environment, ensure our seniors are ready for 
-                the world.
+                Beyond the textbooks, our students enjoy learning with high-quality supplies—from 
+                modern laboratory kits to the latest digital resources. These tools ensure our seniors 
+                are ready for the world beyond our gates.
             </p>
 
             <a href="facilities.html" class="facility-btn">Explore Our Campus Facilities</a>
         </div>
 
+        <div class="testimonial-section">
+            <h2 style="color: #FFD700; text-transform: uppercase;">Alumni Teaching the Future</h2>
+            <div class="testimonial-row">
+                <div class="teacher-card">
+                    <img src="https://images.pexels.com/photos/5212345/pexels-photo-5212345.jpeg" alt="Teacher" class="teacher-img">
+                    <div class="teacher-name">Mr. J. Smith</div>
+                    <p class="quote">"I attended Don Bosco as a student, and now I teach here. It’s an honor to help the next generation get ready for Matric."</p>
+                </div>
+                <div class="teacher-card">
+                    <img src="https://images.pexels.com/photos/5427859/pexels-photo-5427859.jpeg" alt="Teacher" class="teacher-img">
+                    <div class="teacher-name">Ms. A. Dube</div>
+                    <p class="quote">"Don Bosco shaped who I am. Coming back to teach Mathematics is my way of giving back to the school that built me."</p>
+                </div>
+                <div class="teacher-card">
+                    <img src="https://images.pexels.com/photos/5212320/pexels-photo-5212320.jpeg" alt="Teacher" class="teacher-img">
+                    <div class="teacher-name">Mr. K. Naidoo</div>
+                    <p class="quote">"From these very halls to the front of the classroom—I know exactly what our seniors need to succeed."</p>
+                </div>
+            </div>
+        </div>
+
         <div class="building-label">The Official Senior Academic Wing</div>
         
         <div class="image-container">
-            <img src="https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" 
-                 alt="Senior School Building" 
-                 class="school-img">
+            <img src="https://images.pexels.com/photos/256490/pexels-photo-256490.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="Senior School Building" class="school-img">
         </div>
 
     </div>
