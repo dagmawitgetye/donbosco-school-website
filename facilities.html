@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Facilities | Don Bosco Mekanissa</title>
+    <style>
+        /* --- CORE STYLES & COLORS --- */
+        :root {
+            --db-blue: #003366;
+            --db-gold: #FFD700;
+            --light-bg: #f9f9f9;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background-color: var(--white);
+            color: #333;
+        }
+
+        /* --- STICKY NAVIGATION --- */
+        :root {
+    --primary-blue: #0b3d91;
+    --accent-gold: #d4af37;
+    --dark-blue: #082d6b;
+    --glass: rgba(255, 255, 255, 0.15);
+}
+
+body {
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    overflow-x: hidden;
+}
+
+/* Header */
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 5%;
+    background: var(--primary-blue);
+    z-index: 2000;
+    box-sizing: border-box;
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.logo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 2px solid var(--accent-gold);
+}
+
+.school-name {
+    font-family: 'Playfair Display', serif;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 700;
+}
+
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+/* Search box */
+.search-engine {
+    display: flex;
+    align-items: center;
+    background: var(--glass);
+    padding: 5px 12px;
+    border-radius: 30px;
+    border: 1px solid rgba(255,255,255,0.3);
+}
+
+.search-engine input {
+    background: none;
+    border: none;
+    color: white;
+    outline: none;
+    width: 100px;
+}
+
+.search-engine button {
+    background: none;
+    border: none;
+    color: var(--accent-gold);
+    cursor: pointer;
+}
+
+/* Hamburger */
+#hamburger {
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+    z-index: 3000;
+}
+
+/* Overlay menu */
+#menu-overlay {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    width: 100%;
+    height: 100vh;
+    background: var(--dark-blue);
+    z-index: 2500;
+    transition: 0.5s ease;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#menu-overlay.active {
+    right: 0;
+}
+
+#menu-overlay a {
+    color: white;
+    font-size: 2.5rem;
+    text-decoration: none;
+    margin: 15px 0;
+    font-family: 'Playfair Display', serif;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .search-engine input {
+        width: 70px;
+    }
+}
+
+@media (max-width: 480px) {
+    .school-name {
+        font-size: 0.95rem;
+    }
+}
+.nav-links {
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+    font-family: 'Lato', sans-serif;
+}
+
+@media (max-width: 768px) {
+    .nav-links {
+        display: none; /* hide desktop links on mobile */
+    }
+}
+        /* --- HERO VIDEO --- */
+        .hero-video {
+    position: relative;
+    width: 100%;
+    height: 90vh; /* full-screen like Sports page */
+    overflow: hidden;
+}
+
+.hero-video video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4); /* dark overlay like Sports page */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+}
+
+.video-overlay h1 {
+      font-size: 9vw;
+            color: var(--db-gold);
+            margin: 0;
+            text-shadow: 5px 5px 0px var(--db-blue);
+            text-align: center;
+}
+
+.video-overlay p {
+      font-size: 2vw;
+            color: var(--db-gold);
+            margin: 0;
+            text-shadow: 5px 5px 0px var(--db-blue);
+            text-align: center;
+}
+        /* --- ALTERNATING BLOCKS (PARALLEL) --- */
+        .facility-section {
+            padding: 60px 10%;
+        }
+
+        .facility-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            margin-bottom: 100px;
+            gap: 60px;
+        }
+
+        /* This makes the image and text flip positions */
+        .facility-row.reverse {
+            flex-direction: row-reverse;
+        }
+
+        .facility-text {
+            flex: 1;
+        }
+
+        .facility-text h2 {
+            color: var(--db-blue);
+            font-size: 2.2rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .facility-text h2::after {
+            content: '';
+            display: block;
+            width: 50px;
+            height: 4px;
+            background: var(--db-gold);
+            margin-top: 5px;
+        }
+
+        .learn-more {
+            display: inline-block;
+            margin-top: 20px;
+            padding: 10px 25px;
+            background: var(--db-blue);
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .learn-more:hover {
+            background: var(--db-gold);
+            color: var(--db-blue);
+        }
+
+        /* IMAGE WITH BLUE OFFSET BOX */
+        .facility-image-container {
+            flex: 1;
+            position: relative;
+            max-width: 500px;
+        }
+
+        .blue-offset {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            width: 100%;
+            height: 100%;
+            background-color: var(--db-blue);
+            z-index: 1;
+            border-radius: 8px;
+        }
+
+        .facility-image-container img {
+            position: relative;
+            width: 100%;
+            z-index: 2;
+            border-radius: 8px;
+            display: block;
+            object-fit: cover;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        /* --- INTERACTIVE TESTIMONIALS --- */
+        .testimonials-section {
+            background: var(--light-bg);
+            padding: 80px 10%;
+            text-align: center;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .student-card {
+            position: relative;
+            width: 220px;
+            height: 220px;
+            margin: 0 auto;
+            cursor: pointer;
+            border-radius: 50%;
+            border: 5px solid var(--db-gold);
+            overflow: hidden;
+        }
+
+        .student-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.5s ease;
+        }
+
+        .student-quote-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--db-blue);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 0;
+            text-align: center;
+            opacity: 0;
+            transition: 0.5s ease;
+            font-size: 0.85rem;
+            font-style: italic;
+        }
+
+        /* Toggle Classes for JS */
+        .student-card.active .student-img {
+            opacity: 0;
+        }
+
+        .student-card.active .student-quote-overlay {
+            opacity: 1;
+        }
+
+        footer {
+            background: #222;
+            color: white;
+            text-align: center;
+            padding: 30px;
+        }
+        /* --- BENTO GRID STYLES --- */
+.discovery-grid-section {
+    padding: 80px 10%;
+    background-color: #fff;
+}
+
+.section-title {
+    text-align: center;
+    color: var(--db-blue);
+    font-size: 2.5rem;
+    margin-bottom: 40px;
+}
+
+.bento-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 250px);
+    gap: 20px;
+}
+
+.bento-item {
+    position: relative;
+    border-radius: 20px;
+    overflow: hidden;
+    color: white;
+    transition: transform 0.4s ease;
+    cursor: pointer;
+}
+
+.bento-item:hover {
+    transform: scale(1.02);
+}
+
+/* Background Images for Bento Items */
+.bento-image-bg {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    transition: 0.5s;
+}
+
+.bento-item:hover .bento-image-bg {
+    filter: brightness(0.4) blur(2px);
+}
+
+/* Content on top of Bento Images */
+.bento-content {
+    position: relative;
+    z-index: 2;
+    padding: 30px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    background: linear-gradient(to top, rgba(0,51,102,0.8), transparent);
+}
+
+.bento-content h3 {
+    margin: 0;
+    font-size: 1.8rem;
+    color: var(--db-gold);
+}
+
+.bento-content p {
+    font-size: 0.9rem;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: 0.4s;
+}
+
+.bento-item:hover .bento-content p {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.bento-link {
+    color: var(--db-gold);
+    text-decoration: none;
+    font-weight: bold;
+    margin-top: 10px;
+    display: none; /* Hidden until hover */
+}
+
+.bento-item:hover .bento-link {
+    display: block;
+}
+
+/* Grid Layout Logic */
+.transport { grid-column: span 2; }
+.av-room { grid-row: span 2; }
+.cafeteria { grid-column: span 1; }
+.offices { grid-column: span 3; }
+
+/* Responsive Bento */
+@media (max-width: 900px) {
+    .bento-grid {
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: auto;
+    }
+    .transport, .av-room, .cafeteria, .offices { grid-column: span 2; grid-row: auto; height: 300px; }
+}
+
+        /* Responsive Fix */
+        @media (max-width: 768px) {
+            .facility-row, .facility-row.reverse {
+                flex-direction: column;
+                text-align: center;
+            }
+            .facility-text h2::after { margin: 5px auto; }
+            .blue-offset { display: none; } /* Hide offset on mobile for cleaner look */
+        }
+    </style>
+</head>
+<body>
+
+   <header>
+    <div class="logo-area">
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Don_Bosco_logo.png" alt="Don Bosco Logo">
+        <div class="school-name">Don Bosco Catholic School Mekanissa</div>
+    </div>
+    <div class="nav-right">
+        <!-- Desktop nav links -->
+       <div id="menu-overlay">
+    <a href="home.html" onclick="toggleMenu()">Home</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+     <a href="students life.html" onclick="toggleMenu()">Students Life</a>
+         <a href="facilities.html" onclick="toggleMenu()">Facilities</a>
+      <a href="sports-info.html" onclick="toggleMenu()">Sports</a>
+        <a href="technology.html" onclick="toggleMenu()">STEM Center</a>
+          <a href="room.html" onclick="toggleMenu()">Room</a>
+           <a href="stuff.html" onclick="toggleMenu()">Stuff</a>
+          <a href="room.html" onclick="toggleMenu()">Room</a>
+ <a href="senior.html" onclick="toggleMenu()">senior</a>
+    <a href="junior.html" onclick="toggleMenu()">Junior</a>
+
+</div>
+
+        <!-- Search bar -->
+        <div class="search-engine">
+            <input type="text" placeholder="Search...">
+            <button>🔍</button>
+        </div>
+
+        <!-- Hamburger -->
+        <div id="hamburger" onclick="toggleMenu()">☰</div>
+
+    </div>
+</header>
+   <section class="hero-video">
+    <video autoplay muted loop playsinline>
+        <source src="your-video-link.mp4" type="video/mp4">
+    </video>
+    <div class="video-overlay">
+        <h1>Our Facilities</h1>
+        <p>Empowering Students at Don Bosco Mekanissa</p>
+    </div>
+</section>
+
+    <section class="facility-section">
+
+        <div class="facility-row" id="sports">
+            <div class="facility-text">
+                <h2>Sports</h2>
+                <p>Inside our school, we provide modern sports equipment and specialized courts for football, basketball, and athletics to keep our students physically fit.</p>
+                <a href="sports-info.html" class="learn-more">Learn More</a>
+            </div>
+            <div class="facility-image-container">
+                <div class="blue-offset"></div>
+                <img src="./photo_5897719606653160982_y.jpg" alt="Sports">
+            </div>
+        </div>
+
+        <div class="facility-row reverse" id="rooms">
+            <div class="facility-text">
+                <h2>Rooms</h2>
+                <p>Comfortable and spacious classrooms and living quarters designed to be a "home away from home" for every student.</p>
+                <a href="rooms-info.html" class="learn-more">Learn More</a>
+            </div>
+            <div class="facility-image-container">
+                <div class="blue-offset"></div>
+                <img src="./photo_5897719606653160982_y.jpg" alt="Rooms">
+            </div>
+        </div>
+
+        <div class="facility-row" id="technology">
+            <div class="facility-text">
+                <h2>Technology</h2>
+                <p>We integrate the latest educational tools and smart-boards to ensure our students are ready for the modern world.</p>
+                <a href="technology.html" class="learn-more">Learn More</a>
+            </div>
+            <div class="facility-image-container">
+                <div class="blue-offset"></div>
+                <img src="tech-img.jpg" alt="Tech">
+            </div>
+        </div>
+
+        <div class="facility-row reverse" id="ict">
+            <div class="facility-text">
+                <h2>ICT Lab</h2>
+                <p>Our computer centers feature high-speed internet and high-performance machines for technical excellence.</p>
+                <a href="ict.html" class="learn-more">Learn More</a>
+            </div>
+            <div class="facility-image-container">
+                <div class="blue-offset"></div>
+                <img src="ict-img.jpg" alt="ICT">
+            </div>
+        </div>
+
+        <div class="facility-row" id="safety">
+            <div class="facility-text">
+                <h2>Health & Safety</h2>
+                <p>At Don Bosco Mekanissa, the well-being of our students is our highest priority. We believe that a healthy mind requires a healthy and safe environment. Our dedicated school clinic is designed to provide immediate medical attention, health screenings, and a quiet place for recovery..</p>
+                
+            </div>
+            <div class="facility-image-container">
+                <div class="blue-offset"></div>
+                <img src="safety-img.jpg" alt="Safety">
+            </div>
+        </div>
+
+    </section>
+    <section class="discovery-grid-section">
+    <h2 class="section-title">Campus Essentials</h2>
+    <div class="bento-grid">
+        
+        <div class="bento-item transport" id="transport">
+            <div class="bento-content">
+                <h3>Transport</h3>
+                <p>Safe and punctual bus services covering all major routes for our students.</p>
+                <a href="transport.html" class="bento-link">View Routes →</a>
+            </div>
+            <div class="bento-image-bg" style="background-image: url('bus.jpg');"></div>
+        </div>
+
+        <div class="bento-item av-room" id="avroom">
+            <div class="bento-content">
+                <h3>AV Room</h3>
+                <p>Learning comes alive with our high-definition projectors and surround sound systems.</p>
+                <a href="av.html" class="bento-link">Learn More</a>
+            </div>
+            <div class="bento-image-bg" style="background-image: url('./photo_5897719606653160982_y.jpg');"></div>
+        </div>
+
+        <div class="bento-item cafeteria" id="cafeteria">
+            <div class="bento-content">
+                <h3>Staff Cafeteria</h3>
+                <p>A quiet space for our educators to recharge and collaborate.</p>
+            </div>
+            <div class="bento-image-bg" style="background-image: url('./photo_5897719606653160982_y.jpg');"></div>
+        </div>
+
+        <div class="bento-item offices" id="offices">
+            <div class="bento-content">
+                <h3>Offices</h3>
+                <p>Our administrative hub, ensuring the smooth operation of Don Bosco Mekanissa.</p>
+            </div>
+            <div class="bento-image-bg" style="background-image: url('./photo_5897719606653160982_y.jpg');"></div>
+        </div>
+    </div>
+</section>
+
+    <section class="testimonials-section">
+        <h2 style="color: var(--db-blue);">Student Testimonies</h2>
+        <p>Click a student to read their story</p>
+        <div class="testimonial-grid">
+            
+            <div class="student-card" onclick="toggleTest(this)">
+                <img src="student1.jpg" class="student-img" alt="Student">
+                <div class="student-quote-overlay">
+                    <p>"The sports facilities here helped me discover my passion for basketball!"</p>
+                    <strong>- Abel M.</strong>
+                </div>
+            </div>
+
+            <div class="student-card" onclick="toggleTest(this)">
+                <img src="student2.jpg" class="student-img" alt="Student">
+                <div class="student-quote-overlay">
+                    <p>"I spend most of my time in the ICT lab. The computers are very fast."</p>
+                    <strong>- Selam W.</strong>
+                </div>
+            </div>
+
+            <div class="student-card" onclick="toggleTest(this)">
+                <img src="student3.jpg" class="student-img" alt="Student">
+                <div class="student-quote-overlay">
+                    <p>"Our classrooms are so bright and clean. It's a great place to study."</p>
+                    <strong>- Elias G.</strong>
+                </div>
+            </div>
+
+            <div class="student-card" onclick="toggleTest(this)">
+                <img src="student4.jpg" class="student-img" alt="Student">
+                <div class="student-quote-overlay">
+                    <p>"I feel very safe on campus. The staff really looks after us."</p>
+                    <strong>- Hana T.</strong>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Don Bosco Mekanissa. All Rights Reserved.</p>
+    </footer>
+
+    <script>
+        function toggleTest(card) {
+            // This toggles the 'active' class which hides image and shows text
+            card.classList.toggle('active');
+        }
+    </script>
+    
+</body>
+</html>

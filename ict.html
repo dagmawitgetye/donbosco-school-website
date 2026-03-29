@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ITC & Tech Hub | Don Bosco Mekanissa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-blue: #0b3d91;
+            --accent-gold: #d4af37;
+            --dark-blue: #082d6b;
+            --soft-white: #f4f7f6;
+        }
+
+        body { margin: 0; font-family: 'Lato', sans-serif; background: white; color: #333; }
+
+        /* --- SHARED HEADER --- */
+        header {
+            position: fixed; top: 0; width: 100%; height: 80px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 5%; background: var(--primary-blue); z-index: 2000; box-sizing: border-box;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-gold); }
+        .school-name { font-family: 'Playfair Display', serif; color: white; font-size: 1.1rem; }
+        #hamburger { font-size: 2rem; color: white; cursor: pointer; }
+
+        /* --- HERO SECTION --- */
+        .tech-hero {
+            height: 60vh;
+            background: linear-gradient(rgba(8, 45, 107, 0.8), rgba(8, 45, 107, 0.8)), 
+                        url('https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=2000');
+            background-size: cover; background-position: center;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            color: white; text-align: center; padding-top: 80px;
+        }
+        .tech-hero h1 { font-family: 'Playfair Display'; font-size: 3.5rem; margin: 0; }
+        .tech-hero p { font-size: 1.2rem; opacity: 0.9; max-width: 600px; }
+
+        /* --- ROOM GRID --- */
+        .container { padding: 80px 10%; }
+        .section-title { 
+            text-align: center; font-family: 'Playfair Display'; 
+            font-size: 2.5rem; color: var(--primary-blue); margin-bottom: 50px; 
+        }
+
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+        }
+
+        .room-card {
+            background: white; border-radius: 20px; overflow: hidden;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.1);
+            transition: transform 0.4s ease;
+            border: 1px solid #eee;
+            opacity: 0; transform: translateY(30px); /* For reveal effect */
+        }
+        .room-card.active { opacity: 1; transform: translateY(0); }
+        .room-card:hover { transform: translateY(-10px); }
+
+        .room-img { height: 250px; width: 100%; background-size: cover; background-position: center; }
+        
+        .room-info { padding: 30px; }
+        .room-tag { 
+            background: var(--accent-gold); color: black; font-weight: bold; 
+            padding: 5px 15px; border-radius: 50px; font-size: 0.8rem; text-transform: uppercase;
+        }
+        .room-info h3 { font-family: 'Playfair Display'; font-size: 1.8rem; margin: 15px 0 10px; color: var(--primary-blue); }
+        .room-info p { line-height: 1.6; color: #666; font-size: 1rem; }
+
+        /* --- SPECIAL WEB LAB STYLING --- */
+        .web-lab { border: 2px solid var(--accent-gold); position: relative; }
+        .web-lab::after {
+            content: "PREMIUM FACILITY"; position: absolute; top: 10px; right: 10px;
+            background: #000; color: var(--accent-gold); font-size: 10px; padding: 5px 10px; border-radius: 4px;
+        }
+
+        footer { background: var(--dark-blue); color: white; padding: 40px; text-align: center; margin-top: 50px; }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-area">
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Don_Bosco_logo.png">
+        <div class="school-name">Don Bosco Mekanissa ITC</div>
+    </div>
+    <div id="hamburger">☰</div>
+</header>
+
+<section class="tech-hero">
+    <h1>The Digital Frontier</h1>
+    <p>Equipping the next generation of engineers, developers, and digital leaders.</p>
+</section>
+
+<div class="container">
+    <h2 class="section-title">Our Computing Facilities</h2>
+    
+    <div class="room-grid">
+        <div class="room-card reveal">
+            <div class="room-img" style="background-image: url('https://images.unsplash.com/photo-1531297484001-80022131f5a1?w=800');"></div>
+            <div class="room-info">
+                <span class="room-tag">Junior School (1-8)</span>
+                <h3>Foundation ICT Lab</h3>
+                <p>A specialized space for younger students to master basic computing, digital literacy, and creative software in a supervised environment.</p>
+            </div>
+        </div>
+
+        <div class="room-card reveal">
+            <div class="room-img" style="background-image: url('https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800');"></div>
+            <div class="room-info">
+                <span class="room-tag">High School (9-12)</span>
+                <h3>Advanced ICT Lab</h3>
+                <p>Used for regular ICT periods, this lab features high-performance workstations for database management, programming, and advanced office suites.</p>
+            </div>
+        </div>
+
+        <div class="room-card web-lab reveal">
+            <div class="room-img" style="background-image: url('https://images.unsplash.com/photo-1547658719-da2b51169166?w=800');"></div>
+            <div class="room-info">
+                <span class="room-tag">Grade 12 Specialization</span>
+                <h3>The Web Development Studio</h3>
+                <p>An elite lab dedicated to Grade 12 students. Optimized for full-stack web design, featuring modern coding environments and testing servers.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Don Bosco Mekanissa | Technology Department</p>
+</footer>
+
+<script>
+    // Reveal animation logic
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) entry.target.classList.add('active');
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
+
+</body>
+</html>

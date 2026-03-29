@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sports Elite | Don Bosco Mekanissa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Rowdies:wght@400;700&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        :root {
+            --db-blue: #003366;
+            --db-gold: #FFD700;
+            --db-dark: #001a33;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Oswald', sans-serif;
+            margin: 0;
+            background: #001a33; /* Deep Blue base */
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* --- HEADER (MATCHING HOME PAGE) --- */
+        header {
+            background: var(--db-blue);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--db-gold);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .school-name {
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        #hamburger { 
+            font-size: 2rem; 
+            color: white; 
+            cursor: pointer; 
+            z-index: 3000; 
+        }
+
+        /* HAMBURGER MENU OVERLAY */
+        #menu-overlay {
+            position: fixed; 
+            top: 0; 
+            right: -100%; 
+            width: 100%; 
+            height: 100vh;
+            background: var(--db-dark); 
+            z-index: 2500; 
+            transition: 0.5s ease;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+        }
+
+        #menu-overlay.active { right: 0; }
+.close-menu {
+    position: absolute;
+    top: 20px;
+    right: 5%;
+    font-size: 3rem;
+    color: var(--db-gold);
+    cursor: pointer;
+    font-family: 'Rowdies', sans-serif;
+    line-height: 1;
+    z-index: 3001;
+}
+.menu-links {
+        display: flex;
+        flex-wrap: wrap; /* This makes items go to the next line/column */
+        justify-content: center;
+        gap: 20px 40px; /* Vertical and Horizontal spacing */
+        max-width: 800px; /* Keeps the menu from getting too wide */
+        padding: 20px;
+    }
+
+    #menu-overlay a { 
+        color: white; 
+        font-size: 2rem; /* Sized down slightly to fit better */
+        text-decoration: none; 
+        font-family: 'Oswald', sans-serif; 
+        text-transform: uppercase;
+        width: 250px; /* Fixed width so they align in columns */
+        text-align: center;
+        transition: 0.3s;
+    }
+        #menu-overlay a:hover { color: var(--db-gold); }
+
+        /* Secondary Nav (Sport Anchors) */
+        .sport-nav {
+            background: rgba(0, 51, 102, 0.8);
+            padding: 10px 0;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            backdrop-filter: blur(10px);
+        }
+
+        .sport-nav a {
+            color: var(--db-gold);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+
+        /* --- HERO VIDEO --- */
+        .hero {
+            height: 80vh;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-video {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            object-fit: cover;
+            z-index: 1;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            z-index: 2;
+            background: rgba(0, 0, 0, 0.6);
+            width: 100%; height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 8vw;
+            color: var(--db-gold);
+            margin: 0;
+            text-shadow: 5px 5px 0px var(--db-blue);
+            text-align: center;
+        }
+
+        /* --- SPORT BLOCKS --- */
+        .sport-section {
+            padding: 100px 10%;
+            display: flex;
+            align-items: center;
+            position: relative;
+            min-height: 70vh;
+        }
+
+        .sport-section:nth-child(even) { flex-direction: row-reverse; }
+
+        .sport-image {
+            flex: 1.5;
+            height: 450px;
+            background-size: cover;
+            background-position: center;
+            border-radius: 15px;
+            border: 6px solid var(--white);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+            z-index: 1;
+        }
+
+        .sport-content {
+            flex: 1;
+            background: rgba(0, 51, 102, 0.9);
+            padding: 50px;
+            border-radius: 20px;
+            border-left: 12px solid var(--db-gold);
+            backdrop-filter: blur(15px);
+            margin-left: -80px;
+            z-index: 3;
+        }
+
+        .sport-section:nth-child(even) .sport-content {
+            margin-left: 0;
+            margin-right: -80px;
+            border-left: 0;
+            border-right: 12px solid var(--db-gold);
+        }
+
+        .ball-item {
+            position: absolute;
+            width: 120px;
+            z-index: 10;
+            pointer-events: none;
+            filter: drop-shadow(0 0 10px rgba(255,215,0,0.5));
+        }
+
+        /* --- COACHES --- */
+        .coaches-title { text-align: center; font-size: 4rem; color: var(--db-gold); margin-top: 80px; }
+        .coaches-container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+            padding: 40px 10%;
+        }
+
+        .coach-card {
+            background: var(--db-blue);
+            width: 280px;
+            border-radius: 20px;
+            text-align: center;
+            overflow: hidden;
+            border: 3px solid var(--db-gold);
+        }
+
+        .coach-img { width: 100%; height: 320px; object-fit: cover; }
+        .coach-info { padding: 15px; }
+        .coach-info h3 { margin: 0; color: var(--db-gold); font-size: 1.6rem; }
+
+        /* --- VIDEO GRID --- */
+        .video-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            grid-auto-rows: 250px;
+            gap: 20px;
+            padding: 50px 10%;
+        }
+        
+        .video-card iframe {
+            width: 100%; height: 100%; border-radius: 15px; border: 2px solid var(--db-gold);
+        }
+
+        @media (max-width: 900px) {
+            .sport-section, .sport-section:nth-child(even) { flex-direction: column; padding: 50px 5%; }
+            .sport-content { margin: -40px 0 0 0 !important; width: 95%; padding: 30px; }
+            .hero h1 { font-size: 3rem; }
+            .school-name { font-size: 0.9rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Don_Bosco_logo.png" alt="School Logo">
+            <div class="school-name">Don Bosco Catholic School Mekanissa</div>
+        </div>
+        <div id="hamburger" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <div id="menu-overlay">
+        <div class="close-menu" onclick="toggleMenu()">✕</div>
+    <a href="home.html" onclick="toggleMenu()">Home</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+     <a href="students life.html" onclick="toggleMenu()">Students Life</a>
+         <a href="facilities.html" onclick="toggleMenu()">Facilities</a>
+      <a href="sports-info.html" onclick="toggleMenu()">Sports</a>
+        <a href="technology.html" onclick="toggleMenu()">STEM Center</a>
+          <a href="room.html" onclick="toggleMenu()">Room</a>
+           <a href="stuff.html" onclick="toggleMenu()">Stuff</a>
+          <a href="room.html" onclick="toggleMenu()">Room</a>
+ <a href="senior.html" onclick="toggleMenu()">senior</a>
+    <a href="junior.html" onclick="toggleMenu()">Junior</a>
+
+</div>
+    <div class="sport-nav">
+        <a href="#football">FOOTBALL</a>
+        <a href="#basketball">BASKETBALL</a>
+        <a href="#volleyball">VOLLEYBALL</a>
+        <a href="#indoor">INDOOR</a>
+        <a href="#running">RUNNING</a>
+    </div>
+
+    <section class="hero">
+        <video autoplay muted loop playsinline class="hero-video">
+            <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay">
+            <h1>HOME OF THE CHAMPION</h1>
+            <p style="font-size: 1.2rem; letter-spacing: 5px; color: var(--db-gold);">ELITE ATHLETICS</p>
+        </div>
+    </section>
+
+    <section class="sport-section" id="football">
+        <img src="https://cdn-icons-png.flaticon.com/512/53/53283.png" class="ball-item ball-football">
+        <div class="sport-image" style="background-image: url('football-action.jpg');"></div>
+        <div class="sport-content">
+            <h2 style="font-size: 3.5rem; color: var(--db-gold); margin: 0;">FOOTBALL</h2>
+            <p>4 Fields. Thousands of goals. Our fields are the heart of Mekanissa's football culture. We focus on tactical brilliance and physical power.</p>
+            <p><strong>Awards:</strong> Regional Champions 2025.</p>
+        </div>
+    </section>
+
+    <section class="sport-section" id="basketball">
+        <img src="https://cdn-icons-png.flaticon.com/512/2485/2485124.png" class="ball-item ball-basketball">
+        <div class="sport-image" style="background-image: url('basketball-action.jpg');"></div>
+        <div class="sport-content">
+            <h2 style="font-size: 3.5rem; color: var(--db-gold); margin: 0;">BASKETBALL</h2>
+            <p>High-energy courts where legends rise. Our program is built on speed, precision, and the spirit of the game.</p>
+            <p><strong>Events:</strong> Annual Bosco All-Stars League.</p>
+        </div>
+    </section>
+
+    <section class="sport-section" id="volleyball">
+        <img src="https://cdn-icons-png.flaticon.com/512/3299/3299935.png" class="ball-item ball-volleyball">
+        <div class="sport-image" style="background-image: url('volleyball-action.jpg');"></div>
+        <div class="sport-content">
+            <h2 style="font-size: 3.5rem; color: var(--db-gold); margin: 0;">VOLLEYBALL</h2>
+            <p>Experience the thrill of the spike. Our facility is designed for both recreational play and intense inter-school competition.</p>
+        </div>
+    </section>
+
+    <section class="sport-section" id="indoor">
+        <img src="https://cdn-icons-png.flaticon.com/512/2913/2913474.png" class="ball-item chess-piece">
+        <div class="sport-image" style="background-image: url('chess-action.jpg');"></div>
+        <div class="sport-content">
+            <h2 style="font-size: 3rem; color: var(--db-gold); margin: 0;">CHESS & TABLE TENNIS</h2>
+            <p><strong>The Arena of Minds:</strong> Strategic mastery in our chess hall. <br>
+            <strong>The Arena of Reflexes:</strong> Lightning-fast reflexes in our table tennis arena.</p>
+        </div>
+    </section>
+
+    <section class="sport-section" id="running">
+        <div class="sport-image" style="background-image: url('running-action.jpg');"></div>
+        <div class="sport-content">
+            <h2 style="font-size: 3.5rem; color: var(--db-gold); margin: 0;">RUNNING</h2>
+            <p><strong>The Arena of Endurance:</strong> A dedicated space for the rhythm of the stride and building the character of a champion.</p>
+        </div>
+    </section>
+
+    <h2 class="coaches-title">OUR LEADERS</h2>
+    <div class="coaches-container">
+        <div class="coach-card">
+            <img src="coach1.jpg" class="coach-img" alt="Coach Samuel">
+            <div class="coach-info">
+                <h3>Coach Samuel</h3>
+                <p>Football Head Coach</p>
+            </div>
+        </div>
+        <div class="coach-card">
+            <img src="coach2.jpg" class="coach-img" alt="Coach Martha">
+            <div class="coach-info">
+                <h3>Coach Martha</h3>
+                <p>Basketball Coordinator</p>
+            </div>
+        </div>
+        <div class="coach-card">
+            <img src="coach3.jpg" class="coach-img" alt="Coach Elias">
+            <div class="coach-info">
+                <h3>Coach Elias</h3>
+                <p>Indoor Sports Specialist</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Toggle Hamburger Menu
+        function toggleMenu() {
+            const menu = document.getElementById('menu-overlay');
+            const burger = document.getElementById('hamburger');
+            menu.classList.toggle('active');
+            if (menu.classList.contains('active')) {
+                burger.innerHTML = '✕';
+            } else {
+                burger.innerHTML = '☰';
+            }
+        }
+
+        // GSAP Animations
+        gsap.registerPlugin(ScrollTrigger);
+
+        gsap.from(".ball-football", {
+            scrollTrigger: { trigger: "#football", start: "top 80%", end: "top 20%", scrub: 1 },
+            x: -600, y: 100, rotation: 720, opacity: 0
+        });
+
+        gsap.from(".ball-basketball", {
+            scrollTrigger: { trigger: "#basketball", start: "top 80%", end: "top 20%", scrub: 1 },
+            x: 600, y: -200, rotation: -360, opacity: 0,
+            ease: "bounce.out"
+        });
+
+        gsap.from(".ball-volleyball", {
+            scrollTrigger: { trigger: "#volleyball", start: "top 80%", end: "top 20%", scrub: 1 },
+            x: -600, y: -400, rotation: 360, opacity: 0
+        });
+
+        gsap.from(".chess-piece", {
+            scrollTrigger: { trigger: "#indoor", start: "top 80%", end: "top 20%", scrub: 1 },
+            x: 600, y: 0, rotation: 180, opacity: 0
+        });
+    </script>
+</body>
+</html>

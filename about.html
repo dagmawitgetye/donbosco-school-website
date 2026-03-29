@@ -6,15 +6,42 @@
     <title>About Don Bosco | The Full Legacy</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        :root { --db-blue: #004a99; --db-gold: #ffcc00; }
+        :root { 
+            --db-blue: #004a99; 
+            --db-gold: #ffcc00; 
+            --primary-blue: #0b3d91; /* Matching your home page */
+            --accent-gold: #d4af37;
+            --dark-blue: #082d6b;
+        }
         body { background-color: #ffffff; margin: 0; padding: 0; scroll-behavior: smooth; font-family: 'Georgia', serif; }
+
+        /* Navigation Styling from Home */
+        header.site-nav {
+            position: fixed; top: 0; width: 100%; height: 80px;
+            display: flex; align-items: center; justify-content: space-between;
+            padding: 0 5%; background: var(--primary-blue); z-index: 2000; box-sizing: border-box;
+            border-bottom: 3px solid var(--accent-gold);
+        }
+        .logo-area { display: flex; align-items: center; gap: 12px; }
+        .logo { width: 50px; height: 50px; border-radius: 50%; border: 2px solid var(--accent-gold); }
+        .school-name { font-family: 'serif'; color: white; font-size: 1.1rem; font-weight: 700; }
+        #hamburger { font-size: 2rem; color: white; cursor: pointer; z-index: 3000; }
+
+        /* HAMBURGER MENU OVERLAY (From Home) */
+        #menu-overlay {
+            position: fixed; top: 0; right: -100%; width: 100%; height: 100vh;
+            background: var(--dark-blue); z-index: 2500; transition: 0.5s ease;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+        }
+        #menu-overlay.active { right: 0; }
+        .close-menu { position: absolute; top: 20px; right: 5%; font-size: 3rem; color: var(--db-gold); cursor: pointer; }
+        .menu-links { display: flex; flex-direction: column; gap: 20px; text-align: center; }
+        #menu-overlay a { color: white; font-size: 2rem; text-decoration: none; text-transform: uppercase; transition: 0.3s; font-family: sans-serif; }
+        #menu-overlay a:hover { color: var(--db-gold); }
 
         /* Slideshow Animation */
         .slide { position: absolute; inset: 0; opacity: 0; transition: opacity 2s ease-in-out; background-size: cover; background-position: center; }
         .slide.active { opacity: 1; }
-
-        /* Navigation */
-        nav { background: var(--db-blue); border-bottom: 4px solid var(--db-gold); }
 
         /* Reveal on Scroll */
         .reveal { opacity: 0; transform: translateY(40px); transition: 1.2s ease-out; }
@@ -27,17 +54,38 @@
 </head>
 <body class="text-gray-800">
 
-    <nav class="fixed top-0 w-full z-50 px-10 py-5 flex justify-between items-center text-white">
-        <div class="text-2xl font-black tracking-widest uppercase">Don Bosco</div>
-        <div class="hidden md:flex gap-8 text-[10px] font-bold tracking-[0.2em]">
-            <a href="#history" class="hover:text-[--db-gold]">HISTORY</a>
-            <a href="#philosophy" class="hover:text-[--db-gold]">PHILOSOPHY</a>
-            <a href="#mission" class="hover:text-[--db-gold]">MISSION & VISION</a>
-            <a href="#values" class="hover:text-[--db-gold]">VALUES</a>
-            <div class="text-[--db-gold]">EN | አማ</div>
+    <header class="site-nav">
+        <div class="logo-area">
+            <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Don_Bosco_logo.png">
+            <div class="school-name">Don Bosco Mekanissa</div>
         </div>
-    </nav>
 
+        <div class="hidden md:flex gap-8 text-[10px] font-bold tracking-[0.2em] text-white mr-10">
+            <a href="#history" class="hover:text-[--db-gold] transition">HISTORY</a>
+            <a href="#philosophy" class="hover:text-[--db-gold] transition">PHILOSOPHY</a>
+            <a href="#mission" class="hover:text-[--db-gold] transition">MISSION & VISION</a>
+            <a href="#values" class="hover:text-[--db-gold] transition">VALUES</a>
+        </div>
+
+        <div id="hamburger" onclick="toggleMenu()">☰</div>
+    </header>
+
+    <div id="menu-overlay">
+        <div class="close-menu" onclick="toggleMenu()">✕</div>
+        <div class="menu-links">
+             <a href="home.html" onclick="toggleMenu()">Home</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+     <a href="students life.html" onclick="toggleMenu()">Students Life</a>
+         <a href="facilities.html" onclick="toggleMenu()">Facilities</a>
+      <a href="sports-info.html" onclick="toggleMenu()">Sports</a>
+        <a href="technology.html" onclick="toggleMenu()">STEM Center</a>
+          <a href="room.html" onclick="toggleMenu()">Room</a>
+           <a href="stuff.html" onclick="toggleMenu()">Stuff</a>
+          <a href="room.html" onclick="toggleMenu()">Room</a>
+ <a href="senior.html" onclick="toggleMenu()">senior</a>
+    <a href="junior.html" onclick="toggleMenu()">Junior</a>
+        </div>
+    </div>
     <header class="relative h-screen w-full overflow-hidden flex items-center justify-center">
         <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2000');"></div>
         <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1541339907198-e087563f0271?q=80&w=2000');"></div>
@@ -52,7 +100,6 @@
     </header>
 
     <main class="py-24 max-w-6xl mx-auto px-6 space-y-40">
-
         <section id="history" class="grid md:grid-cols-2 gap-16 items-start reveal">
             <div>
                 <h2 class="section-header text-5xl">Our History</h2>
@@ -61,12 +108,13 @@
                     In the mid-19th century, Turin, Italy, was a place of great social change. It was here that Saint John Bosco, a humble priest, saw the struggle of young workers and street children. 
                 </p>
                 <p class="text-lg text-gray-600 leading-relaxed">
-                    He didn't just offer them food; he offered them a future. By establishing the Salesian Society, he created a network of schools and homes that transformed thousands of lives, eventually spreading to every corner of the globe.
+                    He didn't just offer them food; he offered them a future. By establishing the Salesian Society, he created a network of schools and homes that transformed thousands of lives.
                 </p>
             </div>
             <img src="https://images.unsplash.com/photo-1505664194779-8beaceb93744?q=80&w=1000" class="rounded-3xl shadow-2xl" alt="Don Bosco History">
         </section>
-<section id="philosophy" class="bg-gray-50 p-12 md:p-20 rounded-[3rem] reveal text-center">
+
+        <section id="philosophy" class="bg-gray-50 p-12 md:p-20 rounded-[3rem] reveal text-center">
             <h2 class="section-header text-4xl mb-12">The Preventive System</h2>
             <div class="grid md:grid-cols-3 gap-12">
                 <div>
@@ -83,54 +131,20 @@
                 </div>
             </div>
         </section>
-
-        <section id="mission" class="grid md:grid-cols-2 gap-20 items-center reveal">
-            <div class="border-l-8 border-[--db-gold] pl-10">
-                <h2 class="section-header text-4xl mb-4">Our Mission</h2>
-                <p class="text-gray-600 italic mb-10">To empower the youth to become honest citizens and faithful servants of their community through holistic education.</p>
-                
-                <h2 class="section-header text-4xl mb-4">Our Vision</h2>
-                <p class="text-gray-600 italic">To be a sanctuary of learning where every young person discovers their unique path to excellence.</p>
-            </div>
-            <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?q=80&w=1000" class="rounded-3xl shadow-2xl" alt="Mission Vision">
-        </section>
-
-        <section id="values" class="reveal">
-            <div class="text-center mb-16">
-                <h2 class="section-header text-5xl">Core Values</h2>
-            </div>
-            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8 text-center">
-                <div class="p-8 border border-gray-100 rounded-2xl hover:bg-[--db-blue] hover:text-white transition group">
-                    <h4 class="font-black mb-2">Integrity</h4>
-                    <p class="text-sm opacity-60 group-hover:opacity-100 transition">Walking the talk in all we do.</p>
-                </div>
-                <div class="p-8 border border-gray-100 rounded-2xl hover:bg-[--db-gold] hover:text-[--db-blue] transition group">
-                    <h4 class="font-black mb-2">Respect</h4>
-                    <p class="text-sm opacity-60 group-hover:opacity-100 transition">Honoring the dignity of all.</p>
-                </div>
-                <div class="p-8 border border-gray-100 rounded-2xl hover:bg-[--db-blue] hover:text-white transition group">
-                    <h4 class="font-black mb-2">Family</h4>
-                    <p class="text-sm opacity-60 group-hover:opacity-100 transition">Creating a home for everyone.</p>
-                </div>
-                <div class="p-8 border border-gray-100 rounded-2xl hover:bg-[--db-gold] hover:text-[--db-blue] transition group">
-                    <h4 class="font-black mb-2">Service</h4>
-                    <p class="text-sm opacity-60 group-hover:opacity-100 transition">Giving back to our world.</p>
-                </div>
-            </div>
-        </section>
-
     </main>
-<footer class="bg-[--db-blue] py-20 text-center text-white">
-        <h3 class="text-3xl font-black mb-4 tracking-widest uppercase">Don Bosco</h3>
+
+    <footer class="bg-[--db-blue] py-20 text-center text-white">
+        <h3 class="text-3xl font-black mb-4 tracking-widest uppercase">Don Bosco Mekanissa</h3>
         <p class="text-xs opacity-50 tracking-[0.4em] mb-10 italic">"Educating the heart, shaping the world."</p>
-        <div class="flex justify-center gap-10 text-[10px] font-bold tracking-widest border-t border-white/10 pt-10">
-            <a href="#">CONTACT</a>
-            <a href="#">RESOURCES</a>
-            <a href="#">ARCHIVE</a>
-        </div>
     </footer>
 
     <script>
+        // Hamburger Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('menu-overlay');
+            menu.classList.toggle('active');
+        }
+
         // Automatic Slideshow
         let currentSlide = 0;
         const slides = document.querySelectorAll('.slide');

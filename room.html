@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Campus Facilities | Don Bosco Mekanissa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Rowdies:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+    
+    <style>
+        :root {
+            --db-blue: #003366;
+            --db-gold: #FFD700;
+            --db-dark: #001a33;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Oswald', sans-serif;
+            margin: 0;
+            background: var(--db-dark);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* --- SHARED HEADER --- */
+        header {
+            background: var(--db-blue);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 2000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--db-gold);
+        }
+
+        .logo-area { display: flex; align-items: center; gap: 15px; }
+        .logo { height: 50px; width: auto; }
+        .school-name { color: white; font-size: 1.2rem; text-transform: uppercase; }
+
+        /* --- ROOM SECTIONS --- */
+        .building-header {
+            text-align: center;
+            padding: 60px 0 20px;
+            background: linear-gradient(transparent, rgba(0, 51, 102, 0.5));
+        }
+
+        .building-header h1 {
+            font-size: 4rem;
+            color: var(--db-gold);
+            margin: 0;
+            text-shadow: 3px 3px 0px var(--db-blue);
+        }
+
+        .room-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            padding: 40px 10%;
+        }
+
+        .room-card {
+            background: var(--db-blue);
+            border: 2px solid var(--db-gold);
+            border-radius: 15px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+        }
+
+        .room-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .room-img {
+            width: 100%;
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+            border-bottom: 4px solid var(--db-gold);
+        }
+
+        .room-info {
+            padding: 20px;
+        }
+
+        .room-info h3 {
+            color: var(--db-gold);
+            margin-top: 0;
+            font-size: 1.8rem;
+        }
+
+        .grade-badge {
+            display: inline-block;
+            background: var(--db-gold);
+            color: var(--db-dark);
+            padding: 2px 10px;
+            border-radius: 5px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        /* Animation Classes */
+        .reveal { opacity: 0; transform: translateY(50px); }
+
+        @media (max-width: 768px) {
+            .building-header h1 { font-size: 2.5rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-area">
+            <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Don_Bosco_logo.png" alt="School Logo">
+            <div class="school-name">Don Bosco Mekanissa | Rooms</div>
+        </div>
+        <a href="home.html" style="color: white; text-decoration: none; border: 1px solid var(--db-gold); padding: 5px 15px; border-radius: 5px;">BACK</a>
+    </header>
+
+    <div class="building-header reveal">
+        <p style="letter-spacing: 3px; color: var(--db-gold);">BLOCK A</p>
+        <h1>GRADES 1 - 8</h1>
+    </div>
+
+    <section class="room-grid">
+        <div class="room-card reveal">
+            <div class="room-img" style="background-image: url('grade1-8-class.jpg');"></div>
+            <div class="room-info">
+                <span class="grade-badge">Primary</span>
+                <h3>General Classrooms</h3>
+                <p>Spacious, well-ventilated rooms designed for active learning and foundational growth.</p>
+            </div>
+        </div>
+
+        <div class="room-card reveal">
+            <div class="room-img" style="background-image: url('junior-lab.jpg');"></div>
+            <div class="room-info">
+                <span class="grade-badge">Junior</span>
+                <h3>Discovery Lab</h3>
+                <p>An introductory science space where Grade 7-8 students begin their journey into physics and biology.</p>
+            </div>
+        </div>
+    </section>
+
+    <hr style="border: 1px solid var(--db-blue); margin: 50px 10%;">
+
+    <div class="building-header reveal">
+        <p style="letter-spacing: 3px; color: var(--db-gold);">BLOCK B</p>
+        <h1>GRADES 9 - 12 (SENIOR)</h1>
+    </div>
+
+    <section class="room-grid">
+        <div class="room-card reveal">
+            <div class="room-img" style="background-image: url('tech-room.jpg');"></div>
+            <div class="room-info">
+                <span class="grade-badge">Senior</span>
+                <h3>General Classroom</h3>
+                <p>Advanced learning suites featuring both whiteboards and blackboards for different teaching styles. Every room includes built-in ventilators to ensure a fresh, cool environment for high school study</p>
+            </div>
+        </div>
+
+        <div class="room-card reveal">
+            <div class="room-img" style="background-image: url('senior-lecture.jpg');"></div>
+            <div class="room-info">
+                <span class="grade-badge">Senior</span>
+                <h3>Audio-Visual (AV) Room</h3>
+                <p>A high-tech space featuring HD projection and surround sound. We use this room to turn standard lessons into immersive digital experiences, from educational films to interactive virtual tours.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        gsap.registerPlugin(ScrollTrigger);
+
+        // Simple animation to fade in sections as you scroll
+        gsap.utils.toArray('.reveal').forEach(elem => {
+            gsap.to(elem, {
+                scrollTrigger: {
+                    trigger: elem,
+                    start: "top 85%",
+                    toggleActions: "play none none none"
+                },
+                opacity: 1,
+                y: 0,
+                duration: 1,
+                ease: "power2.out"
+            });
+        });
+    </script>
+</body>
+</html>

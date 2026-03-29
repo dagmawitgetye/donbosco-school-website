@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Innovation Hub | Technology & Science</title>
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@700&family=Rowdies:wght@400;700&family=Lora:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --db-blue: #003366;
+            --db-gold: #FFD700;
+            --db-dark: #001a33;
+            --white: #ffffff;
+            --light-bg: #f0f4f8;
+            --accent-gold: #FFD700; /* Matching home page variable name */
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Lora', serif;
+            background: var(--white);
+            color: var(--db-dark);
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            font-family: 'Oswald', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* --- NAVIGATION (MATCHING HOME PAGE) --- */
+        header {
+            background: var(--db-blue);
+            padding: 15px 5%;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 4px solid var(--db-gold);
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .logo {
+            height: 50px;
+            width: auto;
+        }
+
+        .school-name {
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.2rem;
+            text-transform: uppercase;
+        }
+
+        #hamburger { 
+            font-size: 2rem; 
+            color: white; 
+            cursor: pointer; 
+            z-index: 3000; 
+        }
+
+        /* HAMBURGER MENU OVERLAY */
+        #menu-overlay {
+            position: fixed; 
+            top: 0; 
+            right: -100%; 
+            width: 100%; 
+            height: 100vh;
+            background: var(--db-dark); 
+            z-index: 2500; 
+            transition: 0.5s ease;
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+        }
+
+        #menu-overlay.active { right: 0; }
+        .close-menu {
+    position: absolute;
+    top: 20px;
+    right: 5%;
+    font-size: 3rem;
+    color: var(--db-gold);
+    cursor: pointer;
+    font-family: 'Rowdies', sans-serif;
+    line-height: 1;
+    z-index: 3001;
+}
+
+        .menu-links {
+        display: flex;
+        flex-wrap: wrap; /* This makes items go to the next line/column */
+        justify-content: center;
+        gap: 20px 40px; /* Vertical and Horizontal spacing */
+        max-width: 800px; /* Keeps the menu from getting too wide */
+        padding: 20px;
+    }
+
+    #menu-overlay a { 
+        color: white; 
+        font-size: 2rem; /* Sized down slightly to fit better */
+        text-decoration: none; 
+        font-family: 'Oswald', sans-serif; 
+        text-transform: uppercase;
+        width: 250px; /* Fixed width so they align in columns */
+        text-align: center;
+        transition: 0.3s;
+    }
+        #menu-overlay a:hover { color: var(--db-gold); }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            background: linear-gradient(rgba(0, 26, 51, 0.8), rgba(0, 26, 51, 0.8)), 
+                        url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?auto=format&fit=crop&w=1500&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 60vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 5rem;
+            color: var(--db-gold);
+            margin: 0;
+            text-shadow: 4px 4px 0px var(--db-blue);
+        }
+
+        /* --- LAB SECTIONS --- */
+        .detail-section {
+            padding: 80px 10%;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .detail-section:nth-child(even) { 
+            background: var(--light-bg); 
+            flex-direction: row-reverse; 
+        }
+
+        .detail-text { flex: 1; }
+        .detail-image { flex: 1; }
+        
+        .detail-image img { 
+            width: 100%; 
+            height: 400px;
+            object-fit: cover;
+            border-radius: 15px; 
+            border: 6px solid var(--db-blue); 
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .equipment-list {
+            background: white;
+            padding: 25px;
+            margin-top: 20px;
+            border-left: 8px solid var(--db-gold);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .equipment-list h3 { margin-top: 0; color: var(--db-blue); font-size: 1.5rem; }
+        .equipment-list ul { padding-left: 20px; margin-bottom: 0; }
+        .equipment-list li { margin-bottom: 10px; font-weight: bold; }
+
+        /* --- STUDENT SUCCESS --- */
+        .student-section {
+            background: var(--db-dark);
+            color: white;
+            padding: 100px 10%;
+            display: flex;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .student-image { flex: 1; text-align: center; }
+        .student-image img { 
+            width: 400px; 
+            height: 400px; 
+            object-fit: cover; 
+            border-radius: 20px; 
+            border: 10px solid var(--db-gold);
+        }
+
+        .student-info { flex: 1.5; }
+        .student-info h2 { 
+            color: var(--db-gold); 
+            font-size: 3.5rem; 
+            margin-bottom: 20px; 
+            text-shadow: 3px 3px 0px var(--db-blue); 
+        }
+        .student-info p { font-size: 1.2rem; }
+
+        footer { 
+            background: var(--db-blue); 
+            color: white; 
+            text-align: center; 
+            padding: 40px; 
+            border-top: 5px solid var(--db-gold); 
+        }
+
+        @media (max-width: 900px) {
+            .detail-section, .student-section { flex-direction: column !important; padding: 40px 5%; }
+            .hero h1 { font-size: 2.5rem; }
+            .school-name { font-size: 0.9rem; }
+            .student-image img { width: 100%; height: auto; max-width: 400px; }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo-area">
+        <img class="logo" src="https://upload.wikimedia.org/wikipedia/commons/6/6e/Don_Bosco_logo.png" alt="School Logo">
+        <div class="school-name">Don Bosco Catholic School Mekanissa</div>
+    </div>
+    <div id="hamburger" onclick="toggleMenu()">☰</div>
+</header>
+
+<div id="menu-overlay">
+    <div class="close-menu" onclick="toggleMenu()">✕</div>
+    <a href="home.html" onclick="toggleMenu()">Home</a>
+    <a href="about.html" onclick="toggleMenu()">About</a>
+     <a href="students life.html" onclick="toggleMenu()">Students Life</a>
+         <a href="facilities.html" onclick="toggleMenu()">Facilities</a>
+      <a href="sports-info.html" onclick="toggleMenu()">Sports</a>
+        <a href="technology.html" onclick="toggleMenu()">STEM Center</a>
+          <a href="room.html" onclick="toggleMenu()">Room</a>
+           <a href="stuff.html" onclick="toggleMenu()">Stuff</a>
+          <a href="room.html" onclick="toggleMenu()">Room</a>
+ <a href="senior.html" onclick="toggleMenu()">senior</a>
+    <a href="junior.html" onclick="toggleMenu()">Junior</a>
+
+</div>
+
+<section class="hero">
+    <h1>LABORATORY FACILITIES</h1>
+</section>
+
+<section class="detail-section">
+    <div class="detail-text">
+        <h2 style="color: var(--db-blue); font-size: 3rem;">Physics Laboratory</h2>
+        <p>A center for high-level mechanical and electronic experimentation. Our physics lab is built to help students visualize the invisible forces of the universe.</p>
+        <div class="equipment-list">
+            <h3>Facility Highlights:</h3>
+            <ul>
+                <li>Digital Storage Oscilloscopes</li>
+                <li>Precision Laser Bench Sets</li>
+                <li>Advanced Kinematics Sensors</li>
+            </ul>
+        </div>
+    </div>
+    <div class="detail-image">
+        <img src="physics-lab.jpg" alt="Physics Laboratory Equipment">
+    </div>
+</section>
+
+<section class="detail-section">
+    <div class="detail-image">
+        <img src="biology-lab.jpg" alt="Biology Laboratory Facility">
+    </div>
+    <div class="detail-text">
+        <h2 style="color: var(--db-blue); font-size: 3rem;">Bio-Physics & Biology</h2>
+        <p>Explore life at its most fundamental level. Our biology department provides the tools necessary for cellular analysis and molecular research.</p>
+        <div class="equipment-list">
+            <h3>Microscopy & Analysis:</h3>
+            <ul>
+                <li>High-Resolution Compound Microscopes</li>
+                <li>Scanning Digital Microscopes</li>
+                <li>Incubation & Centrifuge Stations</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="detail-section">
+    <div class="detail-text">
+        <h2 style="color: var(--db-blue); font-size: 3rem;">Chemistry Hub</h2>
+        <p>Where reaction meets innovation. This facility houses a massive inventory of reagents and modern tools for chemical synthesis.</p>
+        <div class="equipment-list">
+            <h3>Chemical Inventory:</h3>
+            <ul>
+                <li>500+ Organic and Inorganic Reagents</li>
+                <li>Advanced Fume Hoods & Safety Systems</li>
+                <li>Digital Titration & Distillation Units</li>
+            </ul>
+        </div>
+    </div>
+    <div class="detail-image">
+        <img src="chemistry-lab.jpg" alt="Chemistry Reagents and Tools">
+    </div>
+</section>
+
+<section class="detail-section">
+    <div class="detail-image">
+        <img src="pedagogy.jpg" alt="Modern Science Teaching">
+    </div>
+    <div class="detail-text">
+        <h2 style="color: var(--db-blue); font-size: 3rem;">Modern Pedagogy</h2>
+        <p>Our teaching methods focus on active learning. We bridge the gap between complex theory and hands-on application through STEM-focused instruction.</p>
+        <div class="equipment-list">
+            <h3>Learning Design:</h3>
+            <ul>
+                <li>Collaborative Problem-Solving Spaces</li>
+                <li>Digital Simulation Tools</li>
+                <li>Interactive Project-Based Curriculum</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="student-section">
+    <div class="student-image">
+        <img src="student-certificate.jpg" alt="Award Winning Student Innovator">
+    </div>
+    <div class="student-info">
+        <p style="text-transform: uppercase; color: var(--db-gold); font-weight: bold; letter-spacing: 2px;">Elite Achievement</p>
+        <h2>CERTIFICATE OF INNOVATION</h2>
+        <p>We are proud to showcase the results of our facility's impact. By mastering the tools in our Physics, Bio, and Chemistry labs, our student achieved the highest honor in technological innovation.</p>
+        <p>Using our high-powered microscopes to observe cellular reactions and our vast chemical library to conduct tests, she has proven that Don Bosco Mekanissa is the home of the next generation of scientists.</p>
+    </div>
+</section>
+
+<footer>
+    <p>&copy; 2026 Don Bosco Mekanissa | Excellence in Science & Technology</p>
+</footer>
+
+<script>
+    function toggleMenu() {
+        const menu = document.getElementById('menu-overlay');
+        const burger = document.getElementById('hamburger');
+        menu.classList.toggle('active');
+        if (menu.classList.contains('active')) {
+            burger.innerHTML = '✕';
+        } else {
+            burger.innerHTML = '☰';
+        }
+    }
+</script>
+
+</body>
+</html>
