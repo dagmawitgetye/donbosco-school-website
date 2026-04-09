@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registration | Don Bosco Catholic School</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root { --navy: #1A365D; --gold: #D4AF37; --bg: #F8FAFC; }
+        body, html { margin: 0; padding: 0; font-family: 'Inter', sans-serif; background-color: var(--bg); height: 100vh; overflow: hidden; }
+        .container { display: flex; height: 100vh; }
+        aside { width: 30%; background-color: var(--navy); color: white; padding: 60px 40px; display: flex; flex-direction: column; justify-content: center; }
+        aside h2 { font-size: 32px; color: var(--gold); margin-bottom: 20px; }
+        .doc-list { list-style: none; padding: 0; margin-top: 30px; }
+        .doc-list li { margin-bottom: 15px; padding-left: 30px; position: relative; }
+        .doc-list li::before { content: '✓'; position: absolute; left: 0; color: var(--gold); font-weight: bold; }
+        main { width: 70%; padding: 60px 10%; overflow-y: auto; background: white; }
+        .division-badge { display: inline-block; padding: 6px 18px; border-radius: 25px; font-size: 12px; font-weight: 800; text-transform: uppercase; margin-bottom: 15px; background: var(--gold); color: var(--navy); }
+        .form-header h1 { color: var(--navy); font-size: 36px; margin-bottom: 10px; }
+        .registration-form { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; margin-top: 40px; }
+        .full { grid-column: span 2; }
+        label { font-weight: 600; margin-bottom: 8px; color: #4A5568; display: block; }
+        input, select { width: 100%; padding: 12px; border: 2px solid #E2E8F0; border-radius: 6px; font-size: 16px; box-sizing: border-box; }
+        .submit-btn { grid-column: span 2; background-color: var(--navy); color: white; padding: 18px; border: none; border-radius: 6px; font-size: 18px; font-weight: 800; cursor: pointer; text-transform: uppercase; margin-top: 20px; }
+        #successModal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 1000; justify-content: center; align-items: center; }
+        .modal-content { background: white; padding: 50px; border-radius: 12px; text-align: center; max-width: 500px; width: 90%; border-top: 10px solid var(--gold); }
+        .id-display { font-size: 48px; font-weight: 900; color: var(--navy); margin: 20px 0; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <aside>
+        <h2>Instructions</h2>
+        <ul class="doc-list" id="docs"></ul>
+        <p style="margin-top: 40px; color: var(--gold); font-weight: bold;">Note: Bring these documents on your assigned day.</p>
+    </aside>
+
+    <main>
+        <div class="form-header">
+            <div id="badge" class="division-badge">Division</div>
+            <h1>Student Registration</h1>
+            <p>Enrollment for Academic Year 2026</p>
+        </div>
+
+        <form class="registration-form" id="regForm">
+            <div class="input-group full"><label>Full Name</label><input type="text" placeholder="Enter student's full name" required></div>
+            <div class="input-group"><label>Gender</label><select required><option value="">Select</option><option>Male</option><option>Female</option></select></div>
+            <div class="input-group"><label>Applying for Grade</label><select id="grade" required></select></div>
+            <div class="input-group full"><label>Parent Phone Number</label><input type="tel" placeholder="09..." required></div>
+            <button type="submit" class="submit-btn">Complete Registration</button>
+        </form>
+    </main>
+</div>
+
+<div id="successModal">
+    <div class="modal-content">
+        <h2>Registration Successful!</h2>
+        <p>Your unique Admission ID:</p>
+        <div class="id-display" id="displayID">0000</div>
+        <p>Please come to school on: <strong id="appointmentDay" style="color:var(--gold)">Day 1</strong></p>
+        <button onclick="location.reload()" style="margin-top:20px; padding:10px 20px; cursor:pointer;">Close</button>
+    </div>
+</div>
+
+<script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const level = urlParams.get('level') || 'highschool';
+    const badge = document.getElementById('badge');
+    const gradeSelect = document.getElementById('grade');
+    const docs = document.getElementById('docs');
+
+    if (level === 'elementary') {
+        badge.innerText = "Elementary Division";
+        for (let i = 1; i <= 8; i++) gradeSelect.add(new Option(`Grade ${i}`, i));
+        docs.innerHTML = "<li>Birth Certificate</li><li>Vaccination Card</li><li>2 Passport Photos</li><li>Parent ID</li>";
+    } else {
+        badge.innerText = "High School Division";
+        for (let i = 9; i <= 12; i++) gradeSelect.add(new Option(`Grade ${i}`, i));
+        docs.innerHTML = "<li>Previous Transcript</li><li>Birth Certificate</li><li>2 Passport Photos</li><li>Parent ID</li>";
+    }
+
+    document.getElementById('regForm').onsubmit = function(e) {
+        e.preventDefault();
+        document.getElementById('displayID').innerText = "DB-" + Math.floor(1000 + Math.random() * 9000);
+        document.getElementById('successModal').style.display = 'flex';
+    };
+</script>
+</body>
+</html>

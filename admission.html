@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions | Don Bosco International Standard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1A365D;
+            --dark-navy: #0F172A;
+            --gold: #D4AF37;
+            --slate: #4A5568;
+            --white: #ffffff;
+            --light-gray: #F1F5F9;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--white);
+        }
+
+        /* --- 0. PRESTIGE TOP HEADER WITH NAVIGATION --- */
+        .page-indicator {
+            padding: 60px 10% 40px 10%;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end; /* Aligns buttons with the bottom of the text */
+        }
+
+        .title-group span {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 800;
+            color: var(--navy);
+            opacity: 0.6;
+            margin-bottom: 5px;
+        }
+
+        .title-group h1 {
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            margin: 0;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px; /* Aligns with the baseline of the 'Admissions' text */
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            padding: 14px 25px;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+        }
+
+        .btn-home {
+            background: var(--light-gray);
+            color: var(--navy);
+        }
+
+        .btn-apply {
+            background: var(--gold);
+            color: var(--navy);
+        }
+
+        .nav-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* --- 1. HARVARD LIVE VIDEO HERO --- */
+        .hero-container {
+            position: relative;
+            height: 75vh;
+            width: 96%;
+            margin: 0 auto;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--dark-navy);
+            border-radius: 4px;
+        }
+
+        #bg-video {
+            position: absolute;
+            top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            object-fit: cover;
+            filter: brightness(0.45) contrast(1.1);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 5px;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        .hero-content h2 {
+            font-size: clamp(35px, 6vw, 75px);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            margin: 0;
+            line-height: 0.9;
+            text-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        }
+
+        /* --- 2. INTRODUCTORY SECTION --- */
+        .intro-text {
+            padding: 100px 10%;
+            text-align: center;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .enroll-title { color: var(--navy); font-size: 42px; font-weight: 800; margin-bottom: 20px; }
+        .enroll-description { color: var(--slate); font-size: 19px; line-height: 1.8; }
+
+        /* --- 3. THE 2-CARD GRID --- */
+        .feature-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 4px;
+            background-color: #f1f5f9;
+            width: 95%;
+            margin: 0 auto 100px auto;
+        }
+
+        .action-card {
+            height: 550px;
+            position: relative;
+            overflow: hidden;
+            text-decoration: none;
+            color: white;
+            background: #000;
+        }
+
+        .action-card img {
+            width: 100%; height: 100%; object-fit: cover; opacity: 0.7;
+            transition: 1.2s cubic-bezier(0.19, 1, 0.22, 1);
+        }
+
+        .action-card:hover img { opacity: 0.4; transform: scale(1.05); }
+
+        .card-label { position: absolute; bottom: 60px; left: 50px; }
+        .card-label h3 { font-size: 32px; font-weight: 900; text-transform: uppercase; margin: 0; }
+        .card-label span { color: var(--gold); font-size: 12px; font-weight: 800; letter-spacing: 3px; display: block; margin-bottom: 10px; }
+
+        /* --- 4. THE DETAILED SECTION --- */
+        #heritage-details {
+            padding: 120px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .heritage-img img { width: 100%; border-radius: 4px; box-shadow: 40px 40px 0px #F8FAFC; }
+        .heritage-info h2 { font-family: 'Playfair Display', serif; font-size: 48px; color: var(--navy); margin-bottom: 30px; }
+        .heritage-info p { font-size: 18px; line-height: 1.8; color: var(--slate); }
+
+        /* --- 5. THE BUILDING GATEWAY (PARALLAX) --- */
+        .gateway {
+            position: relative;
+            padding: 180px 10%;
+            text-align: center;
+            color: white;
+            background: linear-gradient(rgba(10, 25, 47, 0.85), rgba(10, 25, 47, 0.95)), 
+                        url('./people.jpg'); 
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            border-top: 10px solid var(--gold);
+        }
+
+        .gateway h2 { font-family: 'Playfair Display', serif; font-size: clamp(34px, 5vw, 60px); margin-bottom: 60px; }
+
+        .apply-btn-large {
+            background-color: var(--gold);
+            color: var(--navy);
+            padding: 26px 90px;
+            font-weight: 900;
+            text-transform: uppercase;
+            text-decoration: none;
+            letter-spacing: 5px;
+            font-size: 14px;
+            display: inline-block;
+        }
+
+        @media (max-width: 1000px) {
+            .page-indicator { flex-direction: column; align-items: flex-start; gap: 30px; }
+            .feature-grid, #heritage-details { grid-template-columns: 1fr; }
+            .hero-container { height: 60vh; width: 100%; border-radius: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="page-indicator">
+        <div class="title-group">
+            <span>Don Bosco School | 2026</span>
+            <h1>Admissions</h1>
+        </div>
+        <nav class="header-nav">
+            <a href="main-home.html" class="nav-btn btn-home">Back to Home</a>
+            <a href="index.html" class="nav-btn btn-apply">Apply Now</a>
+        </nav>
+    </header>
+
+    <div class="hero-container">
+        <video autoplay muted loop playsinline poster="https://images.unsplash.com/photo-1523050853063-bd8012fbb74a?q=80&w=2070" id="bg-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-university-building-with-a-clock-tower-on-top-4340-large.mp4" type="video/mp4">
+        </video>
+        
+        <div class="hero-content">
+            <span class="hero-badge">Enrollment Open</span>
+            <h2>The Future <br> Starts Here</h2>
+        </div>
+    </div>
+
+    <div class="intro-text">
+        <h1 class="enroll-title">Ready to Start Your Journey?</h1>
+        <p class="enroll-description">
+            Join a globally recognized tradition of academic excellence. Our enrollment 
+            process is built for precision, welcoming the next generation of ethical leaders.
+        </p>
+    </div>
+
+    <section class="feature-grid">
+        <a href="index.html" class="action-card">
+            <img src="https://images.unsplash.com/photo-1456735190827-d1262f71b8a3?q=80&w=2067" alt="Apply">
+            <div class="card-label">
+                <span>The Roadmap</span>
+                <h3>How to Apply</h3>
+            </div>
+        </a>
+
+        <a href="#heritage-details" class="action-card">
+            <img src="https://images.unsplash.com/photo-1519810755548-39cd217da494?q=80&w=2088" alt="Heritage">
+            <div class="card-label">
+                <span>The Legacy</span>
+                <h3>Our Heritage</h3>
+            </div>
+        </a>
+    </section>
+
+    <section id="heritage-details">
+        <div class="heritage-img">
+            <img src="https://images.unsplash.com/photo-1564910443496-5fd2d0d84412?q=80&w=1935" alt="Campus Life">
+        </div>
+        <div class="heritage-info">
+            <h2>Integrity in Education</h2>
+            <p>Don Bosco is more than a school; it is a community founded on the principles of reason, religion, and loving-kindness.</p>
+            <p>Our graduates become leaders who serve their communities with distinction. This is the Bosco way.</p>
+        </div>
+    </section>
+
+    <section class="gateway">
+        <h2>If you think you have what it takes to be a Bosco student, take the first step today.</h2>
+        <a href="index.html" class="apply-btn-large">Apply Now</a>
+    </section>
+
+</body>
+</html>

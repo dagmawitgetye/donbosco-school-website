@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>First-Time Enrollment Guide | Don Bosco</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            overflow: hidden; 
+            font-family: 'Inter', sans-serif;
+            background-color: #0A192F;
+        }
+
+        .bg-wrapper {
+            background: linear-gradient(rgba(26, 54, 93, 0.85), rgba(10, 25, 47, 0.95)), 
+                        url('./beanbag.jpeg');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .site-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 5%;
+            background: #ffffff;
+            border-bottom: 5px solid #1A365D;
+            z-index: 10;
+        }
+
+        .main-text {
+            font-size: 32px;
+            font-weight: 800;
+            color: #1A365D;
+            text-transform: uppercase;
+            margin: 0;
+            letter-spacing: -1px;
+        }
+
+        .frame-container {
+            flex-grow: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 30px;
+        }
+
+        .admission-card {
+            background: white;
+            width: 100%;
+            max-width: 850px;
+            max-height: 85vh;
+            border-top: 12px solid #1A365D;
+            box-shadow: 0 40px 80px rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .card-content {
+            padding: 50px;
+            overflow-y: auto;
+        }
+
+        h1 { font-size: 26px; color: #1A365D; margin-bottom: 10px; font-weight: 800; }
+        .intro-p { font-size: 15px; color: #666; margin-bottom: 30px; line-height: 1.5; }
+        
+        .step-section {
+            margin-bottom: 35px;
+            padding-left: 15px;
+            border-left: 2px solid #E2E8F0;
+        }
+
+        .step-number {
+            color: #2B6CB0;
+            font-size: 11px;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        h2 { font-size: 18px; color: #1A365D; margin: 0 0 10px 0; font-weight: 700; }
+
+        p {
+            font-size: 14px;
+            color: #4A5568;
+            line-height: 1.7;
+            margin: 0 0 15px 0;
+        }
+
+        .doc-box {
+            background: #F0F4F8;
+            border-radius: 6px;
+            padding: 20px;
+            margin-top: 10px;
+        }
+
+        .doc-box ul {
+            margin: 10px 0 0 0;
+            padding-left: 20px;
+            font-size: 13px;
+            color: #2D3748;
+        }
+
+        .register-footer {
+            padding: 30px;
+            background: #F7FAFC;
+            border-top: 1px solid #E2E8F0;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .btn-path {
+            display: inline-block;
+            padding: 18px;
+            text-align: center;
+            text-decoration: none;
+            font-size: 14px;
+            font-weight: 800;
+            text-transform: uppercase;
+            border-radius: 50px;
+            transition: 0.3s;
+        }
+
+        .btn-elem {
+            background: #E2E8F0;
+            color: #1A365D;
+        }
+
+        .btn-high {
+            background: #D4AF37;
+            color: #1A365D;
+            box-shadow: 0 10px 20px rgba(212, 175, 55, 0.3);
+        }
+
+        .btn-path:hover {
+            transform: translateY(-3px);
+            background: #1A365D;
+            color: #D4AF37;
+        }
+
+        @media (max-width: 600px) {
+            .register-footer { grid-template-columns: 1fr; }
+        }
+
+        .card-content::-webkit-scrollbar { width: 6px; }
+        .card-content::-webkit-scrollbar-thumb { background: #1A365D; border-radius: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="bg-wrapper">
+    <header class="site-header">
+        <div style="font-weight: 900; color: #1A365D; font-size: 12px; letter-spacing: 0.5px;">
+            DON BOSCO <br> ADMISSIONS OFFICE
+        </div>
+        <div style="text-align: right;">
+            <h2 class="main-text">Registration Guide</h2>
+            <div style="height: 4px; background: #D4AF37; width: 80px; float: right; margin-top: 4px;"></div>
+        </div>
+    </header>
+
+    <div class="frame-container">
+        <div class="admission-card">
+            <div class="card-content">
+                <h1>Welcome to Our Community</h1>
+                <p class="intro-p">We are excited to help you begin your journey. Please follow this comprehensive guide to ensure a smooth enrollment process for the upcoming academic year.</p>
+                
+                <div class="step-section">
+                    <span class="step-number">Phase 01</span>
+                    <h2>Secure Your Online Access ID</h2>
+                    <p>Before visiting the campus, you must register through our secure web portal. This system generates a unique **Admission ID Number**. This number is your "key" to the school; security will require this ID to grant you entry for your official appointment.</p>
+                </div>
+
+                <div class="step-section">
+                    <span class="step-number">Phase 02</span>
+                    <h2>On-Campus Registration & Documents</h2>
+                    <p>Based on the appointment date provided by the website, you will visit the Don Bosco Registrar's office. **This is where formal enrollment begins.** You must bring your physical file, including all necessary paperwork.</p>
+                    
+                    <div class="doc-box">
+                        <strong>Required Documentation Checklist:</strong>
+                        <ul>
+                            <li>Your Printed Online Admission ID Number</li>
+                            <li><strong>Official Academic Transcripts</strong> from your previous school</li>
+                            <li>Birth Certificate and two passport-sized photographs</li>
+                            <li>A valid government ID of the parent or guardian</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="step-section">
+                    <span class="step-number">Phase 03</span>
+                    <h2>The Summer Program Experience</h2>
+                    <p>To prepare for our rigorous academic standards, all prospective students for <strong>Grades 2 through 12</strong> are required to attend our Summer Class. This program helps us evaluate your readiness and allows you to meet your future classmates.</p>
+                    <p><em>*Important: Grade 1 applicants skip this phase and proceed directly to the assessment phase.</em></p>
+                </div>
+
+                <div class="step-section">
+                    <span class="step-number">Phase 04</span>
+                    <h2>Entrance Exam & Final Acceptance</h2>
+                    <p>The final step in our process is the Entrance Examination. For Summer Class students, this takes place at the end of the session. For Grade 1, it is scheduled shortly after registration. Once you pass this exam, you are officially a Don Bosco student!</p>
+                </div>
+            </div>
+
+            <div class="register-footer">
+                <a href="registration.html?level=elementary" class="btn-path btn-elem">Elementary ID</a>
+                <a href="registration.html?level=highschool" class="btn-path btn-high">High School ID</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
