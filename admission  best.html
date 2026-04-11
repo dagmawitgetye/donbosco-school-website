@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admissions | Don Bosco International Standard</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700;900&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1A365D;
+            --dark-navy: #0F172A;
+            --gold: #D4AF37;
+            --slate: #4A5568;
+            --white: #ffffff;
+            --light-gray: #F1F5F9;
+        }
+
+        body, html {
+            margin: 0; padding: 0;
+            font-family: 'Inter', sans-serif;
+            scroll-behavior: smooth;
+            background-color: var(--white);
+        }
+
+        /* --- PRESTIGE TOP HEADER --- */
+        .page-indicator {
+            padding: 60px 10% 40px 10%;
+            background: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+        }
+
+        .title-group span {
+            display: block;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            font-weight: 800;
+            color: var(--navy);
+            opacity: 0.6;
+            margin-bottom: 5px;
+        }
+
+        .title-group h1 {
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            margin: 0;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        .header-nav {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 10px;
+        }
+
+        .nav-btn {
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 11px;
+            font-weight: 800;
+            letter-spacing: 2px;
+            padding: 14px 25px;
+            transition: all 0.3s ease;
+            border-radius: 2px;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-home { background: var(--light-gray); color: var(--navy); }
+        .btn-apply { background: var(--gold); color: var(--navy); }
+
+        /* --- VIDEO HERO --- */
+        .hero-container {
+            position: relative;
+            height: 60vh;
+            width: 96%;
+            margin: 0 auto;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--dark-navy);
+            border-radius: 4px;
+        }
+
+        #bg-video {
+            position: absolute;
+            top: 50%; left: 50%;
+            min-width: 100%; min-height: 100%;
+            transform: translate(-50%, -50%);
+            z-index: 1;
+            object-fit: cover;
+            filter: brightness(0.45);
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            text-transform: uppercase;
+            font-size: 11px;
+            letter-spacing: 5px;
+            margin-bottom: 25px;
+            font-weight: 800;
+        }
+
+        /* --- ADMISSION FORM SECTION --- */
+        .admission-portal {
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 60px;
+            background: #fff;
+        }
+
+        .form-card {
+            background: var(--white);
+            padding: 0;
+        }
+
+        .form-card h2 {
+            font-size: 32px;
+            font-weight: 900;
+            text-transform: uppercase;
+            color: var(--navy);
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        .field { margin-bottom: 20px; }
+        .field.full { grid-column: span 2; }
+
+        label {
+            display: block;
+            font-size: 11px;
+            font-weight: 800;
+            text-transform: uppercase;
+            color: var(--slate);
+            margin-bottom: 8px;
+            letter-spacing: 1px;
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 16px;
+            border: 1px solid #E2E8F0;
+            background: #F8FAFC;
+            font-size: 15px;
+            border-radius: 0;
+        }
+
+        input:focus { outline: none; border-color: var(--gold); }
+
+        /* --- TICKET DESIGN --- */
+        .sidebar { position: sticky; top: 40px; }
+
+        #admission-ticket {
+            display: none;
+            background: var(--navy);
+            color: white;
+            padding: 50px;
+            border-top: 8px solid var(--gold);
+            box-shadow: 0 30px 60px rgba(0,0,0,0.2);
+            text-align: center;
+            animation: slideIn 0.5s ease-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .ticket-id {
+            font-size: 80px;
+            font-weight: 900;
+            color: var(--gold);
+            margin: 10px 0;
+            line-height: 1;
+        }
+
+        .day-badge {
+            background: var(--gold);
+            color: var(--navy);
+            padding: 15px 30px;
+            font-weight: 900;
+            display: inline-block;
+            margin-top: 20px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .info-panel {
+            background: var(--light-gray);
+            padding: 40px;
+            border-left: 4px solid var(--navy);
+        }
+
+        @media (max-width: 1000px) {
+            .admission-portal { grid-template-columns: 1fr; }
+            .form-grid { grid-template-columns: 1fr; }
+            .field.full { grid-column: span 1; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="page-indicator">
+        <div class="title-group">
+            <span>Don Bosco School | 2026</span>
+            <h1>Admissions</h1>
+        </div>
+        <nav class="header-nav">
+            <button class="nav-btn btn-home">Back to Home</button>
+            <button class="nav-btn btn-apply" onclick="document.getElementById('enrollment-form').scrollIntoView()">Start Application</button>
+        </nav>
+    </header>
+
+    <div class="hero-container">
+        <video autoplay muted loop playsinline id="bg-video">
+            <source src="https://assets.mixkit.co/videos/preview/mixkit-university-building-with-a-clock-tower-on-top-4340-large.mp4" type="video/mp4">
+        </video>
+        <div class="hero-content">
+            <span class="hero-badge">Enrollment Open</span>
+            <h2 style="font-size: 60px; font-weight: 900; text-transform: uppercase;">The Future Starts Here</h2>
+        </div>
+    </div>
+
+    <section class="admission-portal" id="enrollment-form">
+        <div class="form-card">
+            <h2>Student Enrollment Form</h2>
+            <form id="admissionForm">
+                <div class="form-grid">
+                    <div class="field full">
+                        <label>Full Name of Student</label>
+                        <input type="text" id="stuName" placeholder="Legal Name as per Birth Certificate" required>
+                    </div>
+
+                    <div class="field">
+                        <label>Date of Birth</label>
+                        <input type="date" required>
+                    </div>
+
+                    <div class="field">
+                        <label>Gender</label>
+                        <select required>
+                            <option value="">Select</option>
+                            <option>Male</option>
+                            <option>Female</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Applying for Grade</label>
+                        <select id="gradeSelect" required>
+                            <option value="">Select Grade</option>
+                            <optgroup label="Elementary">
+                                <option value="1">Grade 1</option><option value="2">Grade 2</option>
+                                <option value="3">Grade 3</option><option value="4">Grade 4</option>
+                                <option value="5">Grade 5</option><option value="6">Grade 6</option>
+                                <option value="7">Grade 7</option><option value="8">Grade 8</option>
+                            </optgroup>
+                            <optgroup label="High School">
+                                <option value="9">Grade 9</option><option value="10">Grade 10</option>
+                                <option value="11">Grade 11</option><option value="12">Grade 12</option>
+                            </optgroup>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label>Nationality</label>
+                        <input type="text" placeholder="e.g. Filipino" required>
+                    </div>
+
+                    <div class="field full">
+                        <label>Previous School Attended</label>
+                        <input type="text" required>
+                    </div>
+
+                    <div class="field">
+                        <label>Parent/Guardian Name</label>
+                        <input type="text" required>
+                    </div>
+
+                    <div class="field">
+                        <label>Contact Number</label>
+                        <input type="tel" required>
+                    </div>
+
+                    <div class="field full">
+                        <label>Home Address</label>
+                        <textarea rows="3" required></textarea>
+                    </div>
+                </div>
+                <button type="submit" class="nav-btn btn-apply" style="width: 100%; padding: 25px; margin-top: 20px;">Submit Application</button>
+            </form>
+        </div>
+
+        <div class="sidebar">
+            <div id="info-static" class="info-panel">
+                <h3 style="color: var(--navy); margin-bottom: 15px; font-weight: 900; text-transform: uppercase;">Instructions</h3>
+                <p style="color: var(--slate); line-height: 1.8; font-size: 15px;">
+                    Fill out the form completely. Upon submission, you will be issued a digital 
+                    admission ticket with a unique <strong>Line Order Number</strong>. 
+                </p>
+                <p style="color: var(--slate); line-height: 1.8; font-size: 15px; margin-top: 10px;">
+                    Our system will automatically assign your campus visit day based on your school level and line position.
+                </p>
+            </div>
+
+            <div id="admission-ticket">
+                <p style="text-transform: uppercase; letter-spacing: 3px; font-size: 12px; font-weight: 800; opacity: 0.7;">Official Pass</p>
+                <h3 id="displayLevel" style="color: var(--gold); margin-top: 5px;">LEVEL</h3>
+                <div class="ticket-id" id="displayNum">#001</div>
+                <p style="font-size: 20px; font-weight: 700; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 20px;" id="displayName">STUDENT NAME</p>
+                
+                <p style="margin-top: 30px; font-size: 12px; text-transform: uppercase; letter-spacing: 1px;">Visit Schedule:</p>
+                <div class="day-badge" id="displayDay">MONDAY</div>
+                
+                <p style="margin-top: 30px; font-size: 11px; opacity: 0.6; font-style: italic;">Please bring a printed copy or screenshot of this pass.</p>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Line Logic
+        let currentQueue = localStorage.getItem('db_queue_pos') ? parseInt(localStorage.getItem('db_queue_pos')) : 0;
+
+        document.getElementById('admissionForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Increment line
+            currentQueue++;
+            localStorage.setItem('db_queue_pos', currentQueue);
+
+            const name = document.getElementById('stuName').value;
+            const grade = parseInt(document.getElementById('gradeSelect').value);
+            
+            let levelText = "";
+            let visitDay = "";
+
+            // LOGIC: Decide School Level & Schedule
+            if (grade <= 8) {
+                levelText = "Elementary Division";
+                // Elementary: Tue (1-200), Thu (201-400), Sat (401+)
+                if (currentQueue <= 200) visitDay = "Tuesday";
+                else if (currentQueue <= 400) visitDay = "Thursday";
+                else visitDay = "Saturday";
+            } else {
+                levelText = "High School Division";
+                // High School: Mon (1-200), Wed (201-400), Fri (401+)
+                if (currentQueue <= 200) visitDay = "Monday";
+                else if (currentQueue <= 400) visitDay = "Wednesday";
+                else visitDay = "Friday";
+            }
+
+            // Update UI
+            document.getElementById('displayName').textContent = name.toUpperCase();
+            document.getElementById('displayLevel').textContent = levelText;
+            document.getElementById('displayNum').textContent = "#" + currentQueue.toString().padStart(3, '0');
+            document.getElementById('displayDay').textContent = visitDay;
+
+            // Show Ticket
+            document.getElementById('admission-ticket').style.display = "block";
+            document.getElementById('info-static').style.display = "none";
+            document.getElementById('admissionForm').style.opacity = "0.3";
+            document.getElementById('admissionForm').style.pointerEvents = "none";
+            
+            // Scroll to result
+            if(window.innerWidth < 1000) {
+                document.getElementById('admission-ticket').scrollIntoView({behavior: 'smooth'});
+            }
+        });
+    </script>
+
+</body>
+</html>
