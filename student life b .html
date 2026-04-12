@@ -1,0 +1,1060 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Don Bosco Academy | Life & Culture</title>
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600;800&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            --db-blue: #0b3d91;
+            --db-orange: #f26522;
+            --text-dark: #1a1a1a;
+            --paper-white: #ffffff;
+            --bg-wash: #f4f1ea;
+            /* Slightly warmer, more "paper" like background */
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: 'Montserrat', sans-serif;
+            color: var(--text-dark);
+            background: var(--bg-wash);
+            overflow-x: hidden;
+            line-height: 1.7;
+        }
+
+        /* --- THE NAV (Sleek & Human) --- */
+        nav {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .logo {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 20px;
+            color: var(--db-blue);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .nav-links {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 600;
+            font-size: 12px;
+            letter-spacing: 1px;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--db-orange);
+        }
+
+        /* --- HERO (High Impact) --- */
+        .hero {
+            height: 95vh;
+            width: 100%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: #000;
+            clip-path: polygon(0 0, 100% 0, 100% 95%, 0% 100%);
+            /* Imperfect bottom edge */
+        }
+
+        .hero video {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.6;
+        }
+
+        .hero-overlay {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+            padding: 0 20px;
+        }
+
+        .hero-overlay h1 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: clamp(2.5rem, 7vw, 5rem);
+            margin: 0;
+            line-height: 1.1;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .hero-overlay p {
+            font-size: 1rem;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 15px;
+            font-weight: 300;
+        }
+
+        /* --- THE HARVARD REVEAL ENGINE --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 1.1s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .quick-info { display: flex; justify-content: space-around; padding: 60px 10%; background: white; text-align: center; }
+        .info-box h3 { color: var(--db-blue); font-size: 2.5rem; margin: 0; }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- THE "IMPERFECT" BOXES --- */
+        .split-section {
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+        }
+
+        .split-box {
+            background: var(--paper-white);
+            padding: 60px 40px;
+            /* Organic, non-perfect border radius */
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+            border: 2px solid var(--db-blue);
+            text-align: center;
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 8px 8px 0px rgba(11, 61, 145, 0.05);
+        }
+
+        /* Tilted slightly for that human feel */
+        .split-box:nth-child(1) {
+            transform: rotate(-1.2deg);
+        }
+
+        .split-box:nth-child(2) {
+            transform: rotate(1deg);
+        }
+
+        .split-box:hover {
+            transform: rotate(0deg) scale(1.03);
+            box-shadow: 15px 15px 0px var(--db-orange);
+            border-color: var(--db-orange);
+        }
+
+        .split-box h2 {
+            font-family: 'Libre Baskerville';
+            font-size: 2.2rem;
+            color: var(--db-blue);
+            margin-bottom: 15px;
+        }
+
+        .btn-hand {
+            display: inline-block;
+            padding: 14px 35px;
+            background: var(--db-blue);
+            color: white;
+            text-decoration: none;
+            font-weight: 700;
+            border-radius: 50px 15px 50px 15px;
+            /* Quirky shape */
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+
+        .btn-hand:hover {
+            background: var(--db-orange);
+            border-radius: 15px 50px 15px 50px;
+        }
+
+        /* --- STORY SECTIONS (The "Taped Photo" Look) --- */
+        .story-row {
+            padding: 80px 10%;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .story-img {
+            position: relative;
+            background: white;
+            padding: 12px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+            transform: rotate(-1.5deg);
+        }
+
+        /* The "Tape" effect */
+        .story-img::after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 90px;
+            height: 25px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .story-img img {
+            width: 100%;
+            display: block;
+            border-radius: 2px;
+        }
+
+        .story-text h2 {
+            font-family: 'Libre Baskerville';
+            font-size: 2.8rem;
+            color: var(--db-blue);
+            line-height: 1.2;
+        }
+
+        .story-text p {
+            font-size: 1.05rem;
+            color: #444;
+            margin-bottom: 25px;
+        }
+
+        /* --- CLUB HUB (Refined Scroll) --- */
+        .club-section {
+            background: #1a1a1a;
+            color: white;
+            padding: 100px 0;
+        }
+
+        .club-header {
+            padding: 0 10%;
+            margin-bottom: 50px;
+            border-left: 4px solid var(--db-orange);
+            margin-left: 10%;
+        }
+
+        .club-scroll {
+            display: flex;
+            overflow-x: auto;
+            gap: 25px;
+            padding: 0 10% 60px;
+            scroll-snap-type: x mandatory;
+            scrollbar-width: none;
+        }
+
+        .club-scroll::-webkit-scrollbar {
+            display: none;
+        }
+
+        .club-card {
+            flex: 0 0 320px;
+            scroll-snap-align: start;
+            background: #222;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: 0.5s;
+        }
+
+        .club-card:hover {
+            transform: translateY(-12px);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .club-card img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            opacity: 0.8;
+            transition: 0.5s;
+        }
+
+        .club-card:hover img {
+            opacity: 1;
+        }
+
+        .club-info {
+            padding: 25px;
+        }
+
+        .club-info h4 {
+            font-family: 'Libre Baskerville';
+            margin: 0 0 8px 0;
+            font-size: 20px;
+            color: var(--db-orange);
+        }
+
+        .club-info p {
+            font-size: 13px;
+            color: #aaa;
+            margin: 0;
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            background: #000;
+            color: white;
+            padding: 80px 10% 40px;
+            text-align: center;
+        }
+
+        .footer-logo {
+            font-family: 'Libre Baskerville';
+            font-size: 24px;
+            margin-bottom: 10px;
+            letter-spacing: 2px;
+        }
+
+
+        .culture-gallery-wrap {
+            padding: 100px 0;
+            background: #fff;
+            overflow: hidden;
+        }
+
+        .culture-intro {
+            text-align: center;
+            padding: 0 10% 50px;
+        }
+
+        /* THE SLIDING STRIP */
+        .photo-strip {
+            display: flex;
+            gap: 30px;
+            width: 250%;
+            /* Makes it long so it can slide */
+            animation: slideLeft 40s linear infinite;
+            /* Constant motion */
+            padding-left: 50px;
+        }
+
+        /* Pause animation on hover so people can look */
+        .photo-strip:hover {
+            animation-play-state: paused;
+        }
+
+        .photo-card {
+            flex: 0 0 350px;
+            background: white;
+            padding: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid #eee;
+            transition: 0.3s;
+        }
+
+        .photo-card img {
+            width: 100%;
+            height: 450px;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* IMPERFECT TILTS */
+        .p1 {
+            transform: rotate(-2deg);
+        }
+
+        .p2 {
+            transform: rotate(1.5deg);
+            margin-top: 20px;
+        }
+
+        .p3 {
+            transform: rotate(-1deg);
+            margin-top: -10px;
+        }
+
+        .p4 {
+            transform: rotate(2.5deg);
+        }
+
+        .photo-card:hover {
+            transform: rotate(0deg) scale(1.05);
+            z-index: 10;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.2);
+        }
+
+
+        .human-gallery {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-stack {
+            position: absolute;
+            width: 250px;
+            height: 350px;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Staggering the images "Left to Right" and overlapping */
+        .s1 {
+            transform: translate(-80px, -20px) rotate(-5deg);
+            z-index: 1;
+        }
+
+        .s2 {
+            transform: translate(0, 0) rotate(2deg);
+            z-index: 2;
+        }
+
+        .s3 {
+            transform: translate(80px, 30px) rotate(-3deg);
+            z-index: 3;
+        }
+
+        .human-gallery:hover .s1 {
+            transform: translate(-150px, -40px) rotate(-8deg);
+        }
+
+        .human-gallery:hover .s3 {
+            transform: translate(150px, 50px) rotate(8deg);
+        }
+
+
+        .human-gallery {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .img-stack {
+            position: absolute;
+            width: 250px;
+            height: 350px;
+            object-fit: cover;
+            border: 8px solid white;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+            transition: 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* Staggering the images "Left to Right" and overlapping */
+        .s1 {
+            transform: translate(-80px, -20px) rotate(-5deg);
+            z-index: 1;
+        }
+
+        .s2 {
+            transform: translate(0, 0) rotate(2deg);
+            z-index: 2;
+        }
+
+        .s3 {
+            transform: translate(80px, 30px) rotate(-3deg);
+            z-index: 3;
+        }
+
+        .human-gallery:hover .s1 {
+            transform: translate(-150px, -40px) rotate(-8deg);
+        }
+
+        .human-gallery:hover .s3 {
+            transform: translate(150px, 50px) rotate(8deg);
+        }
+
+        :root {
+            --bosco-blue: #0b3d91;
+            --bosco-orange: #f26522;
+            --text-dark: #1a1a1a;
+            --bg-wash: #fdfcf9;
+            /* Slightly warm paper feel */
+        }
+
+        /* THE TIMELINE LAYOUT */
+        .timeline-vibe-wrap {
+            padding: 100px 10%;
+            background: var(--bg-wash);
+        }
+
+        .timeline-intro {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .timeline-intro h2 {
+            font-family: 'Libre Baskerville', serif;
+            font-size: 3.5rem;
+            color: var(--bosco-blue);
+            margin: 0;
+        }
+
+        .timeline-intro p {
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .timeline-intro p:first-child {
+            font-weight: 800;
+            color: var(--bosco-orange);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .hand-timeline {
+            position: relative;
+            border-left: 3px dashed var(--bosco-blue);
+            margin-left: 60px;
+            padding-left: 40px;
+        }
+
+        .time-block {
+            position: relative;
+            margin-bottom: 60px;
+        }
+
+        .bosco-time {
+            position: absolute;
+            left: -120px;
+            top: 10px;
+            font-weight: 800;
+            font-size: 1.2rem;
+            color: var(--bosco-orange);
+            background: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+
+        .event-card {
+            background: white;
+            padding: 30px;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+            transition: 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .event-card h4 {
+            font-family: 'Libre Baskerville';
+            font-size: 22px;
+            color: var(--bosco-blue);
+            margin-top: 0;
+        }
+
+        .event-card p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+
+        /* The Imperfect Borders/Shadows */
+        .imperfect-border {
+            border: 2px solid #1a1a1a;
+            border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+        }
+
+        /* Wobbly Rotations and Shadow Styles */
+        .t1 {
+            transform: rotate(-1.5deg);
+            box-shadow: 8px 8px 0 var(--bosco-blue);
+        }
+
+        .t2 {
+            transform: rotate(1.2deg);
+            box-shadow: 8px -8px 0 var(--bosco-orange);
+        }
+
+        .t3 {
+            transform: rotate(-1.2deg);
+            box-shadow: -8px 8px 0 rgba(0, 0, 0, 0.1);
+        }
+
+        .t4 {
+            transform: rotate(1.5deg);
+            box-shadow: 8px 8px 0 var(--bosco-blue);
+        }
+
+        .event-card:hover {
+            transform: rotate(0deg) scale(1.03);
+            box-shadow: 15px 15px 0 var(--bosco-orange);
+        }
+
+        .remix-vibe {
+            padding: 100px 10%;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .remix-text-wrap h2 {
+            font-family: 'Libre Baskerville';
+            font-size: 3.5rem;
+            color: var(--bosco-blue);
+            margin: 0;
+        }
+
+        .remix-text-wrap p {
+            font-size: 1.1rem;
+            color: #555;
+            max-width: 500px;
+        }
+
+        /* The Buttons */
+        .look-selector {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            max-width: 300px;
+        }
+
+        .look-btn {
+            background: transparent;
+            border: 2px solid var(--bosco-blue);
+            color: var(--bosco-blue);
+            padding: 15px 30px;
+            font-size: 14px;
+            font-weight: 700;
+            text-align: left;
+            border-radius: 50px 15px 50px 15px;
+            /* Human wobbly shape */
+            cursor: pointer;
+            transition: 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        .look-btn:hover {
+            background: var(--bosco-orange);
+            color: white;
+            border-color: var(--bosco-orange);
+            transform: scale(1.05) translateX(10px);
+        }
+
+        /* Active button style */
+        .look-btn.active {
+            background: var(--bosco-blue);
+            color: white;
+            box-shadow: 10px 10px 0 var(--bosco-orange);
+        }
+
+        /* THE VIEWER BOX */
+        .look-viewer {
+            position: relative;
+            background: white;
+            padding: 15px;
+            width: 450px;
+            height: 600px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+            transform: rotate(-1.5deg);
+            overflow: hidden;
+            /* Important for the fade-in effect */
+        }
+
+        /* "Tape" effect from the Drama section */
+        .look-viewer::after {
+            content: "";
+            position: absolute;
+            top: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 30px;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(2px);
+            border: 1px solid rgba(0, 0, 0, 0.03);
+        }
+
+        .look-viewer img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 4px;
+            display: block;
+            opacity: 0;
+            /* Starts hidden to allow fade-in */
+            transform: scale(1.1);
+            transition: opacity 0.4s ease-out, transform 0.4s ease-out;
+        }
+
+        /* The active image */
+        .look-viewer img.fade-in {
+            opacity: 1;
+            transform: scale(1);
+        }
+        .testimonial { text-align: center; padding: 100px 15%; background: #f4f1ea; }
+        .testimonial h2 { font-family: 'Libre Baskerville'; color: var(--db-blue); }
+        .testimonial p { font-size: 1.4rem; font-style: italic; color: #444; }
+
+        @media (max-width: 1024px) {
+            .remix-vibe {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .look-viewer {
+                width: 100%;
+                height: 500px;
+            }
+
+            .look-selector {
+                max-width: 100%;
+                align-items: center;
+            }
+        }
+
+
+        /* THE ANIMATION */
+        @keyframes slideLeft {
+            0% {
+                transform: translateX(0);
+            }
+
+            100% {
+                transform: translateX(-50%);
+            }
+        }
+
+        /* For the "Harvard" Reveal to work with the slide */
+        .reveal.active .photo-strip {
+            opacity: 1;
+        }
+
+
+        /* Mobile Layout */
+        @media (max-width: 900px) {
+            .nav-links {
+                display: none;
+            }
+
+            .split-section,
+            .story-row {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .story-row {
+                display: flex;
+                flex-direction: column-reverse;
+            }
+
+            .hero-overlay h1 {
+                font-size: 2.8rem;
+            }
+
+            .hand-timeline {
+                margin-left: 30px;
+            }
+
+            .bosco-time {
+                font-size: 1rem;
+                left: -90px;
+            }
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <nav>
+        <h2 class="logo">Don Bosco Academy</h2>
+        <ul class="nav-links">
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Junior</a></li>
+            <li><a href="#">Senior</a></li>
+            <li><a href="#">Admissions</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+
+    <section class="hero">
+        <video autoplay muted loop playsinline>
+            <source src="https://images.unsplash.com/photo-1523050854058-8df90110c9f1" type="video/mp4">
+        </video>
+        <div class="hero-overlay reveal">
+            <p>Faith & Future Since 1945</p>
+            <h1>Your Journey Begins Here.</h1>
+        </div>
+    </section>
+
+    <section class="split-section reveal">
+        <div class="split-box">
+            <h2>Junior School</h2>
+            <p>A place where curiosity is celebrated and small steps lead to big discoveries. We focus on play and
+                discovery.</p>
+            <a href="#" class="btn-hand">START THE STORY</a>
+        </div>
+        <div class="split-box">
+            <h2>Senior School</h2>
+            <p>Empowering the next generation of thinkers, creators, and leaders to conquer the global stage.</p>
+            <a href="#" class="btn-hand">LEAD THE WAY</a>
+        </div>
+    </section>
+    <section class="quick-info reveal">
+        <div class="info-box"><h3>1200+</h3><p>STUDENTS</p></div>
+        <div class="info-box"><h3>25+</h3><p>CLUBS</p></div>
+        <div class="info-box"><h3>75+</h3><p>YEARS</p></div>
+    </section>
+
+    <section class="story-row reveal">
+        <div class="story-img">
+            <img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644" alt="Culture">
+        </div>
+        <div class="story-text">
+            <h2>Rooted in Culture.</h2>
+            <p>Our identity is our strength. From traditional dance to modern celebrations, Culture Day is the heartbeat
+                of Don Bosco Academy.</p>
+
+        </div>
+    </section>
+    <section class="culture-gallery-wrap reveal">
+        <div class="culture-intro">
+            <h2>Our Vibrant Culture</h2>
+            <p>A celebration of heritage, music, and the unique spirit of Don Bosco students.</p>
+        </div>
+
+        <div class="photo-strip">
+            <div class="photo-card p1"><img src="https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3"
+                    alt="Culture 1"></div>
+            <div class="photo-card p2"><img src="https://images.unsplash.com/photo-1523240795612-9a054b0db644"
+                    alt="Culture 2"></div>
+            <div class="photo-card p3"><img src="https://images.unsplash.com/photo-1514525253361-bee8a19740c1"
+                    alt="Culture 3"></div>
+            <div class="photo-card p4"><img src="https://images.unsplash.com/photo-1503676260728-1c00da094a0b"
+                    alt="Culture 4"></div>
+            <div class="photo-card p1"><img src="https://images.unsplash.com/photo-1511376777868-611b54f68947"
+                    alt="Culture 5"></div>
+            <div class="photo-card p2"><img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30"
+                    alt="Culture 6"></div>
+        </div>
+    </section>
+
+
+
+
+
+
+    <section class="story-row reveal" style="background: #fdfcf9;">
+        <div class="story-text">
+            <h2>Drama & Literature</h2>
+            <p>From the power of the written word to the magic of the stage. At Don Bosco, students don't just read
+                stories—they live them. Our theater productions and literary debates are the soul of the Senior School.
+            </p>
+        </div>
+
+        <div class="human-gallery">
+            <img src="https://images.unsplash.com/photo-1507676184212-d03ab07a01bf" class="img-stack s1" alt="Drama 1">
+            <img src="https://images.unsplash.com/photo-1481627834876-b7833e8f5570" class="img-stack s2" alt="Books">
+            <img src="https://images.unsplash.com/photo-1516339901600-2e1a62986307" class="img-stack s3" alt="Drama 2">
+        </div>
+    </section>
+    <br>
+
+
+    <section class="club-section reveal">
+        <div class="club-header">
+            <h2 style="margin:0;">Pick Your Tribe</h2>
+        </div>
+        <div class="club-scroll">
+            <div class="club-card">
+                <img src="https://images.unsplash.com/photo-1550751827-4bd374c3f58b">
+                <div class="club-info">
+                    <h4>ICT & Code</h4>
+                    <p>Writing the future of technology.</p>
+                </div>
+            </div>
+            <div class="club-card">
+                <img src="https://images.unsplash.com/photo-1456513080510-7bf3a84b82f8">
+                <div class="club-info">
+                    <h4>English Club</h4>
+                    <p>The power of the spoken word.</p>
+                </div>
+            </div>
+            <div class="club-card">
+                <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904">
+                <div class="club-info">
+                    <h4>Math & Logic</h4>
+                    <p>Where logic meets creativity.</p>
+                </div>
+            </div>
+            <div class="club-card">
+                <img src="https://images.unsplash.com/photo-1542601906990-b4d3fb778b09">
+                <div class="club-info">
+                    <h4>Green Club</h4>
+                    <p>Caring for our common home.</p>
+                </div>
+            </div>
+            <div class="club-card">
+                <img src="https://images.unsplash.com/photo-1505751172107-5739a00723a5">
+                <div class="club-info">
+                    <h4>Health Club</h4>
+                    <p>Building mind, body, and soul.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="timeline-vibe-wrap reveal">
+        <div class="timeline-intro">
+            <p>The Daily Rhythm</p>
+            <h2>Life in the Senior School</h2>
+            <p>This isn't a brochure. This is the real schedule, from the first prayer to the final whistle.</p>
+        </div>
+
+        <div class="hand-timeline">
+            <div class="time-block reveal">
+                <span class="bosco-time">08:10</span>
+                <div class="event-card imperfect-border t1">
+                    <h4>Morning Line Up</h4>
+                    <p>The day starts here. We gather as a community to pray and sing the National Anthem. It sets the
+                        tone for everything that follows.</p>
+                </div>
+            </div>
+
+            <div class="time-block reveal">
+                <span class="bosco-time">04:30</span>
+                <div class="event-card imperfect-border t2">
+                    <h4>The Break Pulse</h4>
+                    <p>The campus comes alive. Head to the cafeteria for a snack, jump into a quick sports activity, or
+                        finish that experiment in the Science Lab.</p>
+                </div>
+            </div>
+
+            <div class="time-block reveal">
+                <span class="bosco-time">06:40</span>
+                <div class="event-card imperfect-border t3">
+                    <h4>Mid-Day Madness</h4>
+                    <p>Lunch is more than food. It's time for heated sports competitions on the field or finding a quiet
+                        corner for research in the Library.</p>
+                </div>
+            </div>
+
+            <div class="time-block reveal">
+                <span class="bosco-time">09:35</span>
+                <div class="event-card imperfect-border t4">
+                    <h4>The Final Whistle</h4>
+                    <p>Home time. The gates open and we head out, ready to do it all again tomorrow. The day is done.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="remix-vibe reveal" style="background: white;">
+        <div class="remix-text-wrap">
+            <h2>The Bosco Look</h2>
+            <p>Our uniform is our armor. But Senior students always find that "Don Bosco" remix. How will you style
+                yours?</p>
+
+            <div class="look-selector">
+                <button class="look-btn active" data-look="gameday">Gameday Hero</button>
+                <button class="look-btn" data-look="macchiato">The Macchiato Mix</button>
+                <button class="look-btn" data-look="literature">Theater Vibe</button>
+                <button class="look-btn" data-look="labcoat">Lab Coat Legend</button>
+            </div>
+        </div>
+
+        <div class="look-viewer imperfect-border reveal" id="look-viewer">
+            <img src="https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800"
+                id="current-look-img">
+        </div>
+    </section>
+    <section class="testimonial reveal">
+        <h2>Student Voice</h2>
+        <p>"At Don Bosco, I didn't just find a school; I found a family that pushed me to be the best version of myself."</p>
+        <p style="font-size: 1rem; margin-top: 20px; font-style: normal; font-weight: 700;">— Senior Class President, 2026</p>
+    </section>
+    
+
+
+
+
+
+    <footer>
+        <div class="footer-logo">Don Bosco Academy</div>
+        <p>Addis Ababa, Ethiopia • Founded 1945</p>
+        <p style="opacity:0.4; font-size: 11px; margin-top:20px;">Built with heart & code by students.</p>
+    </footer>
+
+    <script>
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 120;
+
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+        reveal(); // Initial check
+    </script>
+    <script>
+        // OUTFIT ROTATOR SCRIPT
+        const viewer = document.getElementById('look-viewer');
+        const viewerImg = document.getElementById('current-look-img');
+        const buttons = document.querySelectorAll('.look-btn');
+
+        // The data mapping looks to images (Replace these with real photos!)
+        const looksData = {
+            gameday: "https://images.unsplash.com/photo-1461896836934-ffe607ba8211?auto=format&fit=crop&w=800",
+            macchiato: "https://images.unsplash.com/photo-1541167760496-1628856ab772?auto=format&fit=crop&w=800",
+            literature: "https://images.unsplash.com/photo-1514525253361-bee8a19740c1?auto=format&fit=crop&w=800",
+            labcoat: "https://images.unsplash.com/photo-1530210124550-912dc1381cb8?auto=format&fit=crop&w=800"
+        };
+
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                // 1. Remove active class from all buttons
+                buttons.forEach(b => b.classList.remove('active'));
+
+                // 2. Add active class to clicked button
+                btn.classList.add('active');
+
+                // 3. Handle image transition
+                const lookKey = btn.getAttribute('data-look');
+                const newImageSrc = looksData[lookKey];
+
+                // Starts fade-out
+                viewerImg.classList.remove('fade-in');
+
+                setTimeout(() => {
+                    // Change source
+                    viewerImg.src = newImageSrc;
+                    // Starts fade-in
+                    viewerImg.classList.add('fade-in');
+                }, 300); // 300ms matches the fade-out speed
+            });
+        });
+
+        // Run once on load to show the initial Gameday image
+        setTimeout(() => { viewerImg.classList.add('fade-in'); }, 200);
+    </script>
+
+</body>
+
+</html>
