@@ -1,3 +1,129 @@
-The United States leads the world in digital innovation, making it the perfect place for me to further develop my technological intuition. Joining the ESP program is a vital step in preparing myself to thrive in a culture that values active participation and diverse intellectual exchange. Through ESP, I aim to strengthen my ability to organize research, communicate effectively, and approach projects strategically.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Portal</title>
 
-I have already applied some of these skills in my community by tutoring students without access to resources. In the future, I plan to create a digital debate platform to connect schools, using the knowledge and connections I gain at a U.S. university. ESP will help me refine my skills and develop new ideas to solve challenges, allowing me to fully engage in U.S. academic opportunities and prepare to implement scalable solutions that expand educational opportunities and empower youth in my community and beyond.
+<style>
+body{
+  font-family:Arial;
+  background:#f2f4f7;
+  text-align:center;
+  margin:0;
+}
+
+header{
+  background:linear-gradient(135deg,#ff3b30,#c0392b);
+  color:white;
+  padding:20px;
+}
+
+.container{
+  max-width:500px;
+  margin:60px auto;
+  background:white;
+  padding:25px;
+  border-radius:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+/* inputs */
+input{
+  width:90%;
+  padding:10px;
+  margin:8px 0;
+  border:1px solid #ccc;
+  border-radius:6px;
+}
+
+/* button */
+button{
+  background:#c0392b;
+  color:white;
+  border:none;
+  padding:10px 15px;
+  border-radius:6px;
+  cursor:pointer;
+}
+
+button:hover{
+  background:#922b21;
+}
+
+/* dashboard */
+.dashboard{
+  display:none;
+  max-width:700px;
+  margin:40px auto;
+  background:white;
+  padding:20px;
+  border-radius:12px;
+  box-shadow:0 3px 10px rgba(0,0,0,0.1);
+}
+
+.btn{
+  display:inline-block;
+  margin:8px;
+  padding:10px 14px;
+  background:linear-gradient(135deg,#ff3b30,#c0392b);
+  color:white;
+  text-decoration:none;
+  border-radius:8px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>🎓 Student Portal</h1>
+</header>
+
+<!-- LOGIN BOX -->
+<div class="container" id="loginBox">
+
+  <h2>Login</h2>
+
+  <input type="text" id="username" placeholder="Enter Username"><br>
+  <input type="password" id="password" placeholder="Enter Password"><br>
+
+  <button onclick="login()">Login</button>
+
+  <p id="error" style="color:red;"></p>
+
+</div>
+
+<!-- DASHBOARD -->
+<div class="dashboard" id="dashboard">
+
+  <h2>Welcome 🎉</h2>
+  <p>You have successfully entered the Student Portal</p>
+
+  <h3>📚 Available Sections</h3>
+
+  <a class="btn" href="exams.html">Past Exam Papers</a>
+  <a class="btn" href="resources.html">Study Materials</a>
+  <a class="btn" href="#">Announcements</a>
+
+</div>
+
+<script>
+// ✅ YOUR SINGLE SCHOOL LOGIN
+const SCHOOL_USERNAME = "donbosco";
+const SCHOOL_PASSWORD = "1234";
+
+function login(){
+  let user = document.getElementById("username").value;
+  let pass = document.getElementById("password").value;
+
+  if(user === SCHOOL_USERNAME && pass === SCHOOL_PASSWORD){
+    document.getElementById("loginBox").style.display = "none";
+    document.getElementById("dashboard").style.display = "block";
+  } else {
+    document.getElementById("error").innerText = "❌ Wrong username or password";
+  }
+}
+</script>
+
+</body>
+</html>
